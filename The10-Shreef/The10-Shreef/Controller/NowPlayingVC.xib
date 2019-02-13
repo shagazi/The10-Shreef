@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NowPlayingVC" customModule="The10_Shreef" customModuleProvider="target">
+            <connections>
+                <outlet property="video" destination="OsG-Hi-M6k" id="BBO-Ot-HjA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="00l-Lg-jPh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egy-rh-29k">
+                    <rect key="frame" x="16" y="231.5" width="343" height="224"/>
+                    <subviews>
+                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="OsG-Hi-M6k" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="224"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="224" id="1GD-0F-BYP"/>
+                        <constraint firstItem="OsG-Hi-M6k" firstAttribute="top" secondItem="Egy-rh-29k" secondAttribute="top" id="6Jx-57-jJD"/>
+                        <constraint firstAttribute="bottom" secondItem="OsG-Hi-M6k" secondAttribute="bottom" id="Cec-vG-Cit"/>
+                        <constraint firstAttribute="trailing" secondItem="OsG-Hi-M6k" secondAttribute="trailing" id="Hg2-86-D3A"/>
+                        <constraint firstItem="OsG-Hi-M6k" firstAttribute="leading" secondItem="Egy-rh-29k" secondAttribute="leading" id="gl2-PO-ao0"/>
+                        <constraint firstAttribute="width" constant="343" id="iwI-N1-dRX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OsG-Hi-M6k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="7Cg-hE-4nP"/>
+                <constraint firstItem="Egy-rh-29k" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ETb-Tf-q3E"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OsG-Hi-M6k" secondAttribute="trailing" constant="16" id="MH8-bW-y90"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OsG-Hi-M6k" secondAttribute="bottom" constant="211.5" id="sak-CZ-GNx"/>
+                <constraint firstItem="Egy-rh-29k" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="smp-1k-SfH"/>
+                <constraint firstItem="OsG-Hi-M6k" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="211.5" id="wcz-0w-KFB"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="130.40000000000001" y="152.47376311844079"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
+
+target 'The10-Shreef' do
+  use_frameworks!
+
+  # Pods for The10-Shreef
+	pod 'Alamofire'
+	pod 'TMDBSwift'
+	pod 'YouTubePlayer'
+
+end

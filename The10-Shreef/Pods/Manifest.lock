@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.8.1)
+  - TMDBSwift (0.5.1)
+  - YouTubePlayer (0.4.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - TMDBSwift
+  - YouTubePlayer
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - TMDBSwift
+    - YouTubePlayer
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  TMDBSwift: 9220f3dcee23372c05b92f8c111f5f4c37185aee
+  YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
+
+PODFILE CHECKSUM: 04435c21906c8a3e09c6f8588ab14e8f5903f2da
+
+COCOAPODS: 1.5.3
