@@ -15,7 +15,10 @@
 		9E09E5AE2213E4E100AD166E /* UpcomingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5AC2213E4E100AD166E /* UpcomingVC.swift */; };
 		9E09E5AF2213E4E100AD166E /* UpcomingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E09E5AD2213E4E100AD166E /* UpcomingVC.xib */; };
 		9E09E5B12213F5F000AD166E /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5B02213F5EF00AD166E /* Interactor.swift */; };
-		9E09E5B52214DF5000AD166E /* ScrollingPosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5B42214DF4F00AD166E /* ScrollingPosterView.swift */; };
+		9E09E5B92214E4F600AD166E /* ScrollingPagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5B82214E4F600AD166E /* ScrollingPagesView.swift */; };
+		9E09E5BB2214E51200AD166E /* ScrollingPagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E09E5BA2214E51200AD166E /* ScrollingPagesView.xib */; };
+		9E09E5BE2214E6FE00AD166E /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5BC2214E6FE00AD166E /* PosterCell.swift */; };
+		9E09E5BF2214E6FE00AD166E /* PosterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E09E5BD2214E6FE00AD166E /* PosterCell.xib */; };
 		9E688ABD2213A8090018C189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E688ABC2213A8090018C189 /* AppDelegate.swift */; };
 		9E688ABF2213A8090018C189 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E688ABE2213A8090018C189 /* ViewController.swift */; };
 		9E688AC22213A8090018C189 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E688AC02213A8090018C189 /* Main.storyboard */; };
@@ -35,7 +38,10 @@
 		9E09E5AC2213E4E100AD166E /* UpcomingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingVC.swift; sourceTree = "<group>"; };
 		9E09E5AD2213E4E100AD166E /* UpcomingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingVC.xib; sourceTree = "<group>"; };
 		9E09E5B02213F5EF00AD166E /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
-		9E09E5B42214DF4F00AD166E /* ScrollingPosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPosterView.swift; sourceTree = "<group>"; };
+		9E09E5B82214E4F600AD166E /* ScrollingPagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPagesView.swift; sourceTree = "<group>"; };
+		9E09E5BA2214E51200AD166E /* ScrollingPagesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollingPagesView.xib; sourceTree = "<group>"; };
+		9E09E5BC2214E6FE00AD166E /* PosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
+		9E09E5BD2214E6FE00AD166E /* PosterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PosterCell.xib; sourceTree = "<group>"; };
 		9E688AB92213A8090018C189 /* The10-Shreef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The10-Shreef.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E688ABC2213A8090018C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E688ABE2213A8090018C189 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +147,10 @@
 		9E688AD32213ADBD0018C189 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9E09E5B42214DF4F00AD166E /* ScrollingPosterView.swift */,
+				9E09E5B82214E4F600AD166E /* ScrollingPagesView.swift */,
+				9E09E5BA2214E51200AD166E /* ScrollingPagesView.xib */,
+				9E09E5BC2214E6FE00AD166E /* PosterCell.swift */,
+				9E09E5BD2214E6FE00AD166E /* PosterCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -218,6 +227,8 @@
 				9E09E5AB2213E4C000AD166E /* WelcomeVC.xib in Resources */,
 				9E09E5AF2213E4E100AD166E /* UpcomingVC.xib in Resources */,
 				9E688AC72213A80D0018C189 /* Assets.xcassets in Resources */,
+				9E09E5BF2214E6FE00AD166E /* PosterCell.xib in Resources */,
+				9E09E5BB2214E51200AD166E /* ScrollingPagesView.xib in Resources */,
 				9E688AC22213A8090018C189 /* Main.storyboard in Resources */,
 				9E09E5A72213E34A00AD166E /* NowPlayingVC.xib in Resources */,
 			);
@@ -238,6 +249,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/TMDBSwift/TMDBSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -246,6 +258,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TMDBSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouTubePlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -283,10 +296,11 @@
 			files = (
 				9E688AD82213AE740018C189 /* Movies.swift in Sources */,
 				9E688ABF2213A8090018C189 /* ViewController.swift in Sources */,
-				9E09E5B52214DF5000AD166E /* ScrollingPosterView.swift in Sources */,
 				9E688AC52213A8090018C189 /* The10_Shreef.xcdatamodeld in Sources */,
+				9E09E5B92214E4F600AD166E /* ScrollingPagesView.swift in Sources */,
 				9E09E5AE2213E4E100AD166E /* UpcomingVC.swift in Sources */,
 				9E688ABD2213A8090018C189 /* AppDelegate.swift in Sources */,
+				9E09E5BE2214E6FE00AD166E /* PosterCell.swift in Sources */,
 				9E09E5AA2213E4C000AD166E /* WelcomeVC.swift in Sources */,
 				9E09E5B12213F5F000AD166E /* Interactor.swift in Sources */,
 				9E09E5A62213E34A00AD166E /* NowPlayingVC.swift in Sources */,

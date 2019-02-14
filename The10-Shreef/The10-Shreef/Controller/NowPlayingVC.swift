@@ -12,40 +12,53 @@ import YouTubePlayer
 
 class NowPlayingVC: UIViewController {
     @IBOutlet weak var video: YouTubePlayerView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var reviewView: UITextView!
 
     var nowPlaying: [MovieMDB] = []
     var videos: [VideosMDB] = []
+    var reuseIdentifier = "poster"
+    let interactor = Interactor()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        let nib = UINib(nibName: "PosterCell", bundle: nil)
+        self.collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
-        MovieMDB.nowplaying(page: 1) { (client, movies) in
-            if let movies = movies {
-                self.nowPlaying = movies
-                MovieMDB.videos(movieID: self.nowPlaying[0].id) { (client, videos) in
-                    if let videos = videos {
-                        self.videos = videos
-                    }
-                    self.video.loadVideoID(self.videos[0].key)
-
-                }
-            }
-        }
-
-        //
-        // Do any additional setup after loading the view.
     }
 
 
-    /*
-     // MARK: - Navigation
+    func fetchMovies(completionHandler: @escaping ((ClientReturn?, [MovieMDB]?) -> Void)){
+        interactor.fetchNowPlaying { (client, movies) in
+            if let movies = movies {
+                for i in 0...9 {
+                    self.nowPlaying.append(movies[i])
+                }
+            }
+            completionHandler(client, movies)
+        }
+    }
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+}
 
+extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if self.nowPlaying.count > 10 {
+            return 10
+        }
+        else {
+            return self.nowPlaying.count
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PosterCell
+//        let title = nowPlaying[indexPath.row].title
+        //        cell.configure(with: UIImage
+        return cell
+
+    }
 }

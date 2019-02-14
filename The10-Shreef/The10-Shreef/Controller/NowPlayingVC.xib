@@ -12,7 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NowPlayingVC" customModule="The10_Shreef" customModuleProvider="target">
             <connections>
-                <outlet property="video" destination="OsG-Hi-M6k" id="BBO-Ot-HjA"/>
+                <outlet property="collectionView" destination="XQy-Kd-qb9" id="V3A-gJ-mll"/>
+                <outlet property="reviewView" destination="qZ6-lr-za3" id="gyB-Fl-co5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="00l-Lg-jPh"/>
             </connections>
         </placeholder>
@@ -21,33 +22,35 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egy-rh-29k">
-                    <rect key="frame" x="16" y="231.5" width="343" height="224"/>
-                    <subviews>
-                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="OsG-Hi-M6k" customClass="YouTubePlayerView" customModule="YouTubePlayer">
-                            <rect key="frame" x="0.0" y="0.0" width="343" height="224"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
-                    </subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XQy-Kd-qb9">
+                    <rect key="frame" x="16" y="127" width="343" height="350"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="224" id="1GD-0F-BYP"/>
-                        <constraint firstItem="OsG-Hi-M6k" firstAttribute="top" secondItem="Egy-rh-29k" secondAttribute="top" id="6Jx-57-jJD"/>
-                        <constraint firstAttribute="bottom" secondItem="OsG-Hi-M6k" secondAttribute="bottom" id="Cec-vG-Cit"/>
-                        <constraint firstAttribute="trailing" secondItem="OsG-Hi-M6k" secondAttribute="trailing" id="Hg2-86-D3A"/>
-                        <constraint firstItem="OsG-Hi-M6k" firstAttribute="leading" secondItem="Egy-rh-29k" secondAttribute="leading" id="gl2-PO-ao0"/>
-                        <constraint firstAttribute="width" constant="343" id="iwI-N1-dRX"/>
+                        <constraint firstAttribute="height" constant="350" id="pVz-Be-YF9"/>
                     </constraints>
-                </view>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kwk-3P-Kbo">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qZ6-lr-za3">
+                    <rect key="frame" x="16" y="526" width="343" height="121"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="OsG-Hi-M6k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="7Cg-hE-4nP"/>
-                <constraint firstItem="Egy-rh-29k" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ETb-Tf-q3E"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OsG-Hi-M6k" secondAttribute="trailing" constant="16" id="MH8-bW-y90"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OsG-Hi-M6k" secondAttribute="bottom" constant="211.5" id="sak-CZ-GNx"/>
-                <constraint firstItem="Egy-rh-29k" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="smp-1k-SfH"/>
-                <constraint firstItem="OsG-Hi-M6k" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="211.5" id="wcz-0w-KFB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XQy-Kd-qb9" secondAttribute="trailing" constant="16" id="7Zg-4H-0G9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qZ6-lr-za3" secondAttribute="trailing" constant="16" id="G32-E2-YjX"/>
+                <constraint firstItem="qZ6-lr-za3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Jrn-OE-djF"/>
+                <constraint firstItem="qZ6-lr-za3" firstAttribute="top" secondItem="XQy-Kd-qb9" secondAttribute="bottom" constant="49" id="LDW-fA-GVq"/>
+                <constraint firstItem="XQy-Kd-qb9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="107" id="VEh-kx-MeN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qZ6-lr-za3" secondAttribute="bottom" constant="20" id="WWk-uf-mWE"/>
+                <constraint firstItem="XQy-Kd-qb9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ZoN-nM-dx9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="130.40000000000001" y="152.47376311844079"/>
