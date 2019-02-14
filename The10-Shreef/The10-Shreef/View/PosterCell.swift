@@ -16,7 +16,9 @@ class PosterCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         self.posterImage.layer.shadowColor = UIColor.gray.cgColor
-        self.backgroundColor = .blue
+        self.clipsToBounds = false
+        self.layer.borderWidth = 2
+
     }
 
     func configure(with posterImage: UIImage) {

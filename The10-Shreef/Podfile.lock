@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (4.8.1)
+  - AnimatedCollectionViewLayout (0.5.0)
   - TMDBSwift (0.5.1)
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
   - Alamofire
+  - AnimatedCollectionViewLayout
   - TMDBSwift
   - YouTubePlayer
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AnimatedCollectionViewLayout
     - TMDBSwift
     - YouTubePlayer
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  AnimatedCollectionViewLayout: 8b660a623d85001f76f00f0d2302a7b043c72bda
   TMDBSwift: 9220f3dcee23372c05b92f8c111f5f4c37185aee
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: 04435c21906c8a3e09c6f8588ab14e8f5903f2da
+PODFILE CHECKSUM: f3a2ea14c005f2a95b188162bd0d78526b5f431c
 
 COCOAPODS: 1.5.3

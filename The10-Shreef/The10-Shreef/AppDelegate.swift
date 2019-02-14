@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         TMDBConfig.apikey = "dc4c5515899a23feae1fcdb8b0251902"
 
-        let vc = ViewController()
+        let vc = TabBarPresenter.mainViewController
         let nav = UINavigationController(rootViewController: vc)
         window = UIWindow()
         window?.rootViewController = nav

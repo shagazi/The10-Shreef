@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import AnimatedCollectionViewLayout
 
-class ScrollingPagesView: UIView {
-
-    @IBOutlet weak var collectionView: UICollectionView!
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+class ScrollingPagesView: UICollectionView {
+    override func awakeFromNib() {
+        self.isPagingEnabled = true
+        let layout = AnimatedCollectionViewLayout()
+        layout.animator = ParallaxAttributesAnimator(speed: 2)
+        self.collectionViewLayout = layout
+        layout.itemSize = CGSize(width: superview?.frame.width ?? 300, height: superview?.frame.height ?? 450)
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.collectionView?.showsHorizontalScrollIndicator = false
     }
-    */
-
 }

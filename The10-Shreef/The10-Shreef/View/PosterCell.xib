@@ -13,29 +13,29 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PosterCell" customModule="The10_Shreef" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="450"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="450"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Uh-8P-cX8">
-                        <rect key="frame" x="16" y="0.0" width="268" height="450"/>
+                        <rect key="frame" x="16" y="0.0" width="268" height="300"/>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="4Uh-8P-cX8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="0Vp-Ie-iEr"/>
-                <constraint firstItem="4Uh-8P-cX8" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="4db-CI-M7f"/>
+                <constraint firstItem="4Uh-8P-cX8" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" constant="-50" id="4db-CI-M7f"/>
                 <constraint firstAttribute="trailingMargin" secondItem="4Uh-8P-cX8" secondAttribute="trailing" id="NZj-rM-i1E"/>
                 <constraint firstItem="4Uh-8P-cX8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="lr2-OI-fZF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="226" height="356"/>
+            <size key="customSize" width="226" height="256"/>
             <connections>
                 <outlet property="posterImage" destination="4Uh-8P-cX8" id="LT8-7z-nuV"/>
             </connections>
-            <point key="canvasLocation" x="180.80000000000001" y="184.40779610194903"/>
+            <point key="canvasLocation" x="180.80000000000001" y="139.43028485757122"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5CE50EF32A3EF75D469A0E5C48EA6864"
-               BlueprintName = "TMDBSwift"
+               BlueprintIdentifier = "E8F800C4F993A92D7241FD55390B94C8"
+               BlueprintName = "AnimatedCollectionViewLayout"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "TMDBSwift.framework">
+               BuildableName = "AnimatedCollectionViewLayout.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

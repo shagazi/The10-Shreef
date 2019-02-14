@@ -8,5 +8,6 @@ target 'The10-Shreef' do
 	pod 'Alamofire'
 	pod 'TMDBSwift'
 	pod 'YouTubePlayer'
+	pod 'AnimatedCollectionViewLayout'
 
 end
