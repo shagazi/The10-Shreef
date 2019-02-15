@@ -13,29 +13,56 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PosterCell" customModule="The10_Shreef" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="658"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="658"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Uh-8P-cX8">
-                        <rect key="frame" x="16" y="0.0" width="268" height="300"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Uh-8P-cX8">
+                        <rect key="frame" x="16" y="20" width="268" height="450"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="450" id="IX2-bV-aCr"/>
+                        </constraints>
                     </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="4uk-TL-KAg">
+                        <rect key="frame" x="16" y="512" width="268" height="146"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgm-Fx-FrC">
+                        <rect key="frame" x="132" y="476" width="36" height="36"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" image="icons8-play-button-48">
+                            <color key="titleColor" red="0.98593085999999996" green="0.078524761832876711" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="4Uh-8P-cX8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="0Vp-Ie-iEr"/>
-                <constraint firstItem="4Uh-8P-cX8" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" constant="-50" id="4db-CI-M7f"/>
+                <constraint firstAttribute="trailing" secondItem="4uk-TL-KAg" secondAttribute="trailing" constant="16" id="ADd-4Q-uUc"/>
                 <constraint firstAttribute="trailingMargin" secondItem="4Uh-8P-cX8" secondAttribute="trailing" id="NZj-rM-i1E"/>
+                <constraint firstItem="Lgm-Fx-FrC" firstAttribute="centerX" secondItem="4Uh-8P-cX8" secondAttribute="centerX" id="SUG-di-sRN"/>
+                <constraint firstItem="4uk-TL-KAg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="WLy-m7-dY6"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="4uk-TL-KAg" secondAttribute="bottom" id="aAy-h9-6QY"/>
+                <constraint firstItem="Lgm-Fx-FrC" firstAttribute="top" secondItem="4Uh-8P-cX8" secondAttribute="bottom" constant="6" id="han-Wi-N2k"/>
+                <constraint firstItem="4uk-TL-KAg" firstAttribute="top" secondItem="Lgm-Fx-FrC" secondAttribute="bottom" id="lFu-F0-gRf"/>
                 <constraint firstItem="4Uh-8P-cX8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="lr2-OI-fZF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="226" height="256"/>
+            <size key="customSize" width="226" height="564"/>
             <connections>
                 <outlet property="posterImage" destination="4Uh-8P-cX8" id="LT8-7z-nuV"/>
+                <outlet property="synopsisView" destination="4uk-TL-KAg" id="sZ6-v8-WXN"/>
+                <outlet property="trailerButton" destination="Lgm-Fx-FrC" id="UXC-xB-9cc"/>
             </connections>
-            <point key="canvasLocation" x="180.80000000000001" y="139.43028485757122"/>
+            <point key="canvasLocation" x="164.80000000000001" y="182.60869565217394"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="icons8-play-button-48" width="36" height="36"/>
+    </resources>
 </document>

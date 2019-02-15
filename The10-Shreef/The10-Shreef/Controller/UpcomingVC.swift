@@ -19,7 +19,7 @@ class UpcomingVC: UIViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
-        self.title = "Up Coming"
+        self.title = "Coming Soon"
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +29,7 @@ class UpcomingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = UIColor.black
         self.collectionView.dataSource  = self
         self.collectionView.delegate    = self
 

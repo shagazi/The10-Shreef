@@ -1,4 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/sophaz/cocoapods.git'
 platform :ios, '10.0'
 
 target 'The10-Shreef' do
@@ -9,5 +10,6 @@ target 'The10-Shreef' do
 	pod 'TMDBSwift'
 	pod 'YouTubePlayer'
 	pod 'AnimatedCollectionViewLayout'
+	pod 'Novagraph'
 
 end

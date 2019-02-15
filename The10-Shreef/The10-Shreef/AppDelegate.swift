@@ -14,14 +14,17 @@ import TMDBSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var statusBarStyle: UIStatusBarStyle?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         TMDBConfig.apikey = "dc4c5515899a23feae1fcdb8b0251902"
 
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         let vc = TabBarPresenter.mainViewController
         let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.isHidden = true
         window = UIWindow()
         window?.rootViewController = nav
         window?.makeKeyAndVisible()

@@ -16,6 +16,8 @@
 		9E09E5B92214E4F600AD166E /* ScrollingPagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5B82214E4F600AD166E /* ScrollingPagesView.swift */; };
 		9E09E5BE2214E6FE00AD166E /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5BC2214E6FE00AD166E /* PosterCell.swift */; };
 		9E09E5BF2214E6FE00AD166E /* PosterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E09E5BD2214E6FE00AD166E /* PosterCell.xib */; };
+		9E24F8482215FDA600D10805 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E24F8472215FDA600D10805 /* PresentationController.swift */; };
+		9E24F84B2215FEE500D10805 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E24F84A2215FEE500D10805 /* UIViewExtension.swift */; };
 		9E33F13D221552D700239350 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E33F13C221552D700239350 /* TabBarPresenter.swift */; };
 		9E688ABD2213A8090018C189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E688ABC2213A8090018C189 /* AppDelegate.swift */; };
 		9E688ABF2213A8090018C189 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E688ABE2213A8090018C189 /* ViewController.swift */; };
@@ -23,8 +25,15 @@
 		9E688AC52213A8090018C189 /* The10_Shreef.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E688AC32213A8090018C189 /* The10_Shreef.xcdatamodeld */; };
 		9E688AC72213A80D0018C189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E688AC62213A80D0018C189 /* Assets.xcassets */; };
 		9E688ACA2213A80D0018C189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E688AC82213A80D0018C189 /* LaunchScreen.storyboard */; };
-		9E688AD82213AE740018C189 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E688AD72213AE740018C189 /* Movies.swift */; };
 		9E688ADA2213B3ED0018C189 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E688AD92213B3ED0018C189 /* Alamofire.framework */; };
+		9EF1E27F221601A600A9D16C /* TrailerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E27D221601A600A9D16C /* TrailerVC.swift */; };
+		9EF1E280221601A600A9D16C /* TrailerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF1E27E221601A600A9D16C /* TrailerVC.xib */; };
+		9EF1E2822216132300A9D16C /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2812216132300A9D16C /* NowPlaying.swift */; };
+		9EF1E2842216133500A9D16C /* UpComing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2832216133500A9D16C /* UpComing.swift */; };
+		9EF1E2862216134500A9D16C /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2852216134500A9D16C /* MovieInfo.swift */; };
+		9EF1E2892216137700A9D16C /* The10-Shreef.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2872216137700A9D16C /* The10-Shreef.xcdatamodeld */; };
+		9EF1E28D2216280300A9D16C /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E28C2216280300A9D16C /* Movies.swift */; };
+		9EF1E28F221681F700A9D16C /* imdbInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E28E221681F700A9D16C /* imdbInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +46,8 @@
 		9E09E5B82214E4F600AD166E /* ScrollingPagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPagesView.swift; sourceTree = "<group>"; };
 		9E09E5BC2214E6FE00AD166E /* PosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
 		9E09E5BD2214E6FE00AD166E /* PosterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PosterCell.xib; sourceTree = "<group>"; };
+		9E24F8472215FDA600D10805 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		9E24F84A2215FEE500D10805 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		9E33F13C221552D700239350 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		9E688AB92213A8090018C189 /* The10-Shreef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The10-Shreef.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E688ABC2213A8090018C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,8 +57,15 @@
 		9E688AC62213A80D0018C189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E688AC92213A80D0018C189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E688ACB2213A80D0018C189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E688AD72213AE740018C189 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		9E688AD92213B3ED0018C189 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EF1E27D221601A600A9D16C /* TrailerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerVC.swift; sourceTree = "<group>"; };
+		9EF1E27E221601A600A9D16C /* TrailerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailerVC.xib; sourceTree = "<group>"; };
+		9EF1E2812216132300A9D16C /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
+		9EF1E2832216133500A9D16C /* UpComing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComing.swift; sourceTree = "<group>"; };
+		9EF1E2852216134500A9D16C /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
+		9EF1E2882216137700A9D16C /* The10-Shreef.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "The10-Shreef.xcdatamodel"; sourceTree = "<group>"; };
+		9EF1E28C2216280300A9D16C /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
+		9EF1E28E221681F700A9D16C /* imdbInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imdbInfo.swift; sourceTree = "<group>"; };
 		C12F6AD62348796DD10621C5 /* Pods-The10-Shreef.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The10-Shreef.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The10-Shreef/Pods-The10-Shreef.debug.xcconfig"; sourceTree = "<group>"; };
 		ECD601C60612627C7C32742E /* Pods_The10_Shreef.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The10_Shreef.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,6 +101,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9E24F8462215FD6B00D10805 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				9E24F8472215FDA600D10805 /* PresentationController.swift */,
+				9EF1E27D221601A600A9D16C /* TrailerVC.swift */,
+				9EF1E27E221601A600A9D16C /* TrailerVC.xib */,
+			);
+			path = shared;
+			sourceTree = "<group>";
+		};
+		9E24F8492215FEC600D10805 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9E24F84A2215FEE500D10805 /* UIViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		9E33F13B221552A700239350 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +148,7 @@
 		9E688ABB2213A8090018C189 /* The10-Shreef */ = {
 			isa = PBXGroup;
 			children = (
+				9E24F8492215FEC600D10805 /* Extension */,
 				9E33F13B221552A700239350 /* Presenter */,
 				9E688AD42213ADC60018C189 /* Interactor */,
 				9E688AD32213ADBD0018C189 /* View */,
@@ -131,6 +168,7 @@
 		9E688AD12213ADA90018C189 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9E24F8462215FD6B00D10805 /* shared */,
 				9E09E5A42213E34A00AD166E /* NowPlayingVC.swift */,
 				9E09E5A52213E34A00AD166E /* NowPlayingVC.xib */,
 				9E09E5AC2213E4E100AD166E /* UpcomingVC.swift */,
@@ -142,7 +180,12 @@
 		9E688AD22213ADB70018C189 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9E688AD72213AE740018C189 /* Movies.swift */,
+				9EF1E2812216132300A9D16C /* NowPlaying.swift */,
+				9EF1E2832216133500A9D16C /* UpComing.swift */,
+				9EF1E2852216134500A9D16C /* MovieInfo.swift */,
+				9EF1E2872216137700A9D16C /* The10-Shreef.xcdatamodeld */,
+				9EF1E28C2216280300A9D16C /* Movies.swift */,
+				9EF1E28E221681F700A9D16C /* imdbInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +274,7 @@
 				9E09E5BF2214E6FE00AD166E /* PosterCell.xib in Resources */,
 				9E688AC22213A8090018C189 /* Main.storyboard in Resources */,
 				9E09E5A72213E34A00AD166E /* NowPlayingVC.xib in Resources */,
+				9EF1E280221601A600A9D16C /* TrailerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,8 +290,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-The10-Shreef/Pods-The10-Shreef-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoAuth/AWSCognitoAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AnimatedCollectionViewLayout/AnimatedCollectionViewLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/Novagraph/Novagraph.framework",
 				"${BUILT_PRODUCTS_DIR}/TMDBSwift/TMDBSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework",
 			);
@@ -255,8 +305,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedCollectionViewLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Novagraph.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TMDBSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouTubePlayer.framework",
 			);
@@ -294,14 +350,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E688AD82213AE740018C189 /* Movies.swift in Sources */,
+				9EF1E27F221601A600A9D16C /* TrailerVC.swift in Sources */,
+				9EF1E2862216134500A9D16C /* MovieInfo.swift in Sources */,
 				9E688ABF2213A8090018C189 /* ViewController.swift in Sources */,
+				9E24F8482215FDA600D10805 /* PresentationController.swift in Sources */,
 				9E688AC52213A8090018C189 /* The10_Shreef.xcdatamodeld in Sources */,
 				9E09E5B92214E4F600AD166E /* ScrollingPagesView.swift in Sources */,
 				9E33F13D221552D700239350 /* TabBarPresenter.swift in Sources */,
+				9E24F84B2215FEE500D10805 /* UIViewExtension.swift in Sources */,
 				9E09E5AE2213E4E100AD166E /* UpcomingVC.swift in Sources */,
+				9EF1E28D2216280300A9D16C /* Movies.swift in Sources */,
+				9EF1E2822216132300A9D16C /* NowPlaying.swift in Sources */,
 				9E688ABD2213A8090018C189 /* AppDelegate.swift in Sources */,
+				9EF1E28F221681F700A9D16C /* imdbInfo.swift in Sources */,
 				9E09E5BE2214E6FE00AD166E /* PosterCell.swift in Sources */,
+				9EF1E2842216133500A9D16C /* UpComing.swift in Sources */,
+				9EF1E2892216137700A9D16C /* The10-Shreef.xcdatamodeld in Sources */,
 				9E09E5B12213F5F000AD166E /* Interactor.swift in Sources */,
 				9E09E5A62213E34A00AD166E /* NowPlayingVC.swift in Sources */,
 			);
@@ -516,6 +580,16 @@
 			);
 			currentVersion = 9E688AC42213A8090018C189 /* The10_Shreef.xcdatamodel */;
 			path = The10_Shreef.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		9EF1E2872216137700A9D16C /* The10-Shreef.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9EF1E2882216137700A9D16C /* The10-Shreef.xcdatamodel */,
+			);
+			currentVersion = 9EF1E2882216137700A9D16C /* The10-Shreef.xcdatamodel */;
+			path = "The10-Shreef.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
