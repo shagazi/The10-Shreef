@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NowPlayingVC" customModule="The10_Shreef" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="7Ya-lY-0NK" id="LCY-B1-vY0"/>
+                <outlet property="collectionView" destination="7Ya-lY-0NK" id="kda-vd-F2p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="00l-Lg-jPh"/>
             </connections>
         </placeholder>

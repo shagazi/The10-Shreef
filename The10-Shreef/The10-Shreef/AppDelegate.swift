@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var statusBarStyle: UIStatusBarStyle?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        CoreDataManager.setUpCoreDataStack()
 
         TMDBConfig.apikey = "dc4c5515899a23feae1fcdb8b0251902"
 

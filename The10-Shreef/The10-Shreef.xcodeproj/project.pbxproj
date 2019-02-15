@@ -30,10 +30,10 @@
 		9EF1E280221601A600A9D16C /* TrailerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF1E27E221601A600A9D16C /* TrailerVC.xib */; };
 		9EF1E2822216132300A9D16C /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2812216132300A9D16C /* NowPlaying.swift */; };
 		9EF1E2842216133500A9D16C /* UpComing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2832216133500A9D16C /* UpComing.swift */; };
-		9EF1E2862216134500A9D16C /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2852216134500A9D16C /* MovieInfo.swift */; };
 		9EF1E2892216137700A9D16C /* The10-Shreef.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2872216137700A9D16C /* The10-Shreef.xcdatamodeld */; };
 		9EF1E28D2216280300A9D16C /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E28C2216280300A9D16C /* Movies.swift */; };
 		9EF1E28F221681F700A9D16C /* imdbInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E28E221681F700A9D16C /* imdbInfo.swift */; };
+		9EF1E29122169E6D00A9D16C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E29022169E6D00A9D16C /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,10 +62,10 @@
 		9EF1E27E221601A600A9D16C /* TrailerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailerVC.xib; sourceTree = "<group>"; };
 		9EF1E2812216132300A9D16C /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		9EF1E2832216133500A9D16C /* UpComing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComing.swift; sourceTree = "<group>"; };
-		9EF1E2852216134500A9D16C /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
 		9EF1E2882216137700A9D16C /* The10-Shreef.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "The10-Shreef.xcdatamodel"; sourceTree = "<group>"; };
 		9EF1E28C2216280300A9D16C /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		9EF1E28E221681F700A9D16C /* imdbInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imdbInfo.swift; sourceTree = "<group>"; };
+		9EF1E29022169E6D00A9D16C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C12F6AD62348796DD10621C5 /* Pods-The10-Shreef.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The10-Shreef.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The10-Shreef/Pods-The10-Shreef.debug.xcconfig"; sourceTree = "<group>"; };
 		ECD601C60612627C7C32742E /* Pods_The10_Shreef.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The10_Shreef.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -161,6 +161,7 @@
 				9E688AC82213A80D0018C189 /* LaunchScreen.storyboard */,
 				9E688ACB2213A80D0018C189 /* Info.plist */,
 				9E688AC32213A8090018C189 /* The10_Shreef.xcdatamodeld */,
+				9EF1E29022169E6D00A9D16C /* CoreDataManager.swift */,
 			);
 			path = "The10-Shreef";
 			sourceTree = "<group>";
@@ -182,10 +183,9 @@
 			children = (
 				9EF1E2812216132300A9D16C /* NowPlaying.swift */,
 				9EF1E2832216133500A9D16C /* UpComing.swift */,
-				9EF1E2852216134500A9D16C /* MovieInfo.swift */,
+				9EF1E28E221681F700A9D16C /* imdbInfo.swift */,
 				9EF1E2872216137700A9D16C /* The10-Shreef.xcdatamodeld */,
 				9EF1E28C2216280300A9D16C /* Movies.swift */,
-				9EF1E28E221681F700A9D16C /* imdbInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,8 +351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EF1E27F221601A600A9D16C /* TrailerVC.swift in Sources */,
-				9EF1E2862216134500A9D16C /* MovieInfo.swift in Sources */,
 				9E688ABF2213A8090018C189 /* ViewController.swift in Sources */,
+				9EF1E29122169E6D00A9D16C /* CoreDataManager.swift in Sources */,
 				9E24F8482215FDA600D10805 /* PresentationController.swift in Sources */,
 				9E688AC52213A8090018C189 /* The10_Shreef.xcdatamodeld in Sources */,
 				9E09E5B92214E4F600AD166E /* ScrollingPagesView.swift in Sources */,

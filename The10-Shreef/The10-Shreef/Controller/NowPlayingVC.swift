@@ -10,17 +10,17 @@ import UIKit
 import TMDBSwift
 import YouTubePlayer
 import AnimatedCollectionViewLayout
-import Novagraph
 
 class NowPlayingVC: UIViewController {
-    @IBOutlet weak var video:           YouTubePlayerView!
+//    @IBOutlet weak var video:           YouTubePlayerView!
     @IBOutlet weak var collectionView:  ScrollingPagesView!
-    @IBOutlet weak var reviewView:      UITextView!
+//    @IBOutlet weak var reviewView:      UITextView!
 
-    var videos: VideosMDB?
+    var nowPlayingInfo: VideosMDB?
     var nowPlaying: [MovieMDB]  = []
-    let interactor              = Interactor()
-    var reuseIdentifier         = "poster"
+    var movies: [NowPlaying] = [] //fetch movies
+    let interactor = Interactor()
+    var reuseIdentifier = "poster"
     var youTubeId = String()
 
     //    var nowplaying = NowPlaying.createNew()
@@ -50,46 +50,25 @@ class NowPlayingVC: UIViewController {
         self.collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
         
-        interactor.fetchNowPlaying { (client, movies) in
-            if let movies = movies {
-                self.nowPlaying = movies
-//                self.interactor.fetchTrailer(movieID: self.nowPlaying[0].id, completionHandler: { (client, videos) in
-//                    let json = client?.json
-//                    if let dicts = json?["results"] {
-//                        for (_, value) in dicts {
-//                            if value["type"] == "Trailer" {
-//                                self.youTubeId = value["key"].rawString() ?? ""
-//                            }
-//                        }
-//                    }
-//                })
+        MovieMDB.nowplaying(page: 1) { (client, movies) in
+            guard let movies = movies else { return }
+            for i in 0...9 {
+                self.nowPlaying.append(movies[i])
+                MovieMDB.videos(movieID: movies[i].id, completion: { (client, videos) in
+                    guard let videos = videos else { return }
+                    for video in videos {
+                        if video.type == "Trailer" {
+                            self.nowPlayingInfo = video
+                            break
+                        }
+                    }
+                })
             }
+            self.collectionView.reloadData()
         }
 
-    }
-    //    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    ////        snapToNearestCell(collectionView)
-    //    }
-    //
-    //    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    //        snapToNearestCell(collectionView)
-    //    }
-    //
-    //    func snapToNearestCell(_ collectionView: UICollectionView) {
-    //        for i in 0..<collectionView.numberOfItems(inSection: 0) {
-    //            if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-    //                let itemWithSpaceWidth  = layout.itemSize.width + layout.minimumLineSpacing
-    //                let itemWidth           = layout.itemSize.width
-    //                if collectionView.contentOffset.x < CGFloat(i) * itemWithSpaceWidth + (itemWidth / 2) {
-    //                    let indexPath = IndexPath(item: i, section: 0)
-    //                    UIView.animate(withDuration: 0.2) {
-    //                        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    //                    }
-    //                    break
-    //                }
-    //            }
-    //        }
-    //    }
+//        interactor.createNowPlaying(movies: nowPlaying, trailers: <#T##VideosMDB#>, imdb: <#T##imdbInfo#>)
+//    }
 
 }
 
@@ -105,23 +84,24 @@ extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PosterCell
-        let movie = nowPlaying[indexPath.row]
-        let video = videos
-        if let image = movie.poster_path {
-            var url = URL(string: "https://image.tmdb.org/t/p/w500")!
-            url.appendPathComponent(image)
-            let data = try? Data(contentsOf: url)
-            if let imageData = data {
-                let image = UIImage(data: imageData)
+        let movie = movies[indexPath.row]
+        interactor.fetchPoster(posterPath: movie.posterPath) { (image) in
+            if let image = image {
                 cell.posterImage.image = image
             }
-        }        //        cell.configure(with: UIImage
-        cell.synopsisView.text = movie.overview
-        cell.trailerID = video?.id ?? ""
+        }
+        MovieMDB.videos(movieID: movie.id, completion: { (_, videos) in
+            guard let videos = videos else { return }
+            for video in videos {
+                if video.type == "Trailer" {
+                    self.nowPlayingInfo = video
 
-
+                    break
+                }
+            }
+        })
+        cell.synopsisView.text = movie.overView
         cell.clipsToBounds = false
-        //        cell.backgroundColor = .blue
         return cell
 
     }
