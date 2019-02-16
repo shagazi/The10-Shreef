@@ -93,6 +93,7 @@
             <connections>
                 <outlet property="additionalImage" destination="4Pj-8c-hZV" id="DDw-eI-dch"/>
                 <outlet property="additionalLabel" destination="gqL-mf-nm6" id="ruo-o6-ElS"/>
+                <outlet property="imdbImage" destination="4Xx-BM-ZgM" id="D7m-sF-dI2"/>
                 <outlet property="imdbLabel" destination="OJz-C8-Nzc" id="MSS-M0-d84"/>
                 <outlet property="overView" destination="4uk-TL-KAg" id="sZ6-v8-WXN"/>
                 <outlet property="posterImage" destination="4Uh-8P-cX8" id="LT8-7z-nuV"/>

@@ -9,12 +9,13 @@
 import CoreData
 import TMDBSwift
 
-@objc(NowPlaying)
-class NowPlaying: NSManagedObject {
+@objc(Movie)
+class Movie: NSManagedObject {
     @NSManaged var id          : String
     @NSManaged var title       : String
     @NSManaged var posterPath  : String
     @NSManaged var overView    : String
+    @NSManaged var type        : String
 
     @NSManaged var trailer     : Trailer
     @NSManaged var imdb        : Imdb

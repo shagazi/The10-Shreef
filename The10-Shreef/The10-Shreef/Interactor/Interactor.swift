@@ -10,23 +10,25 @@ import TMDBSwift
 import CoreData
 
 class Interactor: NSObject {
-    func fetchNowPlaying(completionHandler: @escaping((ClientReturn?, [MovieMDB]?) -> Void)) {
-        MovieMDB.nowplaying(page: 1) { (client, movies) in
-            let movies = movies
-            completionHandler(client, movies)
-        }
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+    func fetch(with type: String, with value: String) -> [Movie] {
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<Movie>(entityName: String("Movie"))
+        request.predicate = NSPredicate(format: "\(type) == %@", value)
+        let fetchedObjects = try! context.fetch(request)
+        return fetchedObjects
     }
 
-    func fetchUpcoming(completionHandler: @escaping((ClientReturn?, [MovieMDB]?) -> Void)) {
-        MovieMDB.upcoming(page: 1) { (client, movies) in
-            completionHandler(client, movies)
+    func fetch(with ID: String) -> Movie {
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<Movie>(entityName: String("Movie"))
+        request.predicate = NSPredicate(format: "id == %@", ID)
+        let fetchedObjects = try! context.fetch(request)
+        if let first = fetchedObjects.first {
+            return first
         }
-    }
-
-    func fetchTrailer(movieID: Int, completionHandler: @escaping((ClientReturn?, [VideosMDB]?) -> Void)) {
-        MovieMDB.videos(movieID: movieID) { (client, videoInfo) in
-            completionHandler(client, videoInfo)
-        }
+        return NSEntityDescription.insertNewObject(forEntityName: "Movie", into: context) as! Movie
     }
 
     func fetchImdb(imdbID: String, completionHandler: @escaping ((imdbInfo?, Error?) -> Void)) {

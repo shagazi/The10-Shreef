@@ -9,7 +9,7 @@
         <attribute name="rated" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rottenTomatoes" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="NowPlaying" representedClassName="NowPlaying" syncable="YES">
+    <entity name="Movie" representedClassName="Movie" syncable="YES">
         <attribute name="director" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imdbID" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,6 +18,7 @@
         <attribute name="posterPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rated" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="imdb" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Imdb" syncable="YES"/>
         <relationship name="trailer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trailer" syncable="YES"/>
     </entity>
@@ -26,7 +27,7 @@
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NowPlaying" positionX="-36" positionY="9" width="128" height="195"/>
+        <element name="Movie" positionX="-36" positionY="9" width="128" height="210"/>
         <element name="Trailer" positionX="0" positionY="117" width="128" height="75"/>
         <element name="Imdb" positionX="27" positionY="126" width="128" height="150"/>
     </elements>
