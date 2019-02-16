@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Imdb" representedClassName="Imdb" syncable="YES">
+        <attribute name="director" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imdbScore" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="metaCritic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rottenTomatoes" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="NowPlaying" representedClassName="NowPlaying" syncable="YES">
+        <attribute name="director" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imdbID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imdbRating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overView" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="imdb" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Imdb" syncable="YES"/>
+        <relationship name="trailer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trailer" syncable="YES"/>
+    </entity>
+    <entity name="Trailer" representedClassName="Trailer" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="NowPlaying" positionX="-36" positionY="9" width="128" height="195"/>
+        <element name="Trailer" positionX="0" positionY="117" width="128" height="75"/>
+        <element name="Imdb" positionX="27" positionY="126" width="128" height="150"/>
+    </elements>
+</model>

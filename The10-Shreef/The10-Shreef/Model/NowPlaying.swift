@@ -7,17 +7,28 @@
 //
 
 import CoreData
+import TMDBSwift
 
 @objc(NowPlaying)
 class NowPlaying: NSManagedObject {
-    @NSManaged var id          : Int
+    @NSManaged var id          : String
     @NSManaged var title       : String
     @NSManaged var posterPath  : String
-    @NSManaged var trailerPath : String
     @NSManaged var overView    : String
-    @NSManaged var Rated       : String?
-    @NSManaged var Director    : String?
-    @NSManaged var imdbRating  : String?
-    @NSManaged var imdbID      : String?
-    @NSManaged var Ratings     : [[String : String]]?
+
+    @NSManaged var trailer     : Trailer
+    @NSManaged var imdb        : Imdb
+
+    func parseMovie(data: MovieMDB){
+        self.id = String(data.id)
+        if let title = data.title {
+            self.title = title
+        }
+        if let posterPath = data.poster_path {
+            self.posterPath = posterPath
+        }
+        if let overView = data.overview {
+            self.overView = overView
+        }
+    }
 }

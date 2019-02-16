@@ -40,15 +40,10 @@ class TabBarPresenter {
 
         tab.addChild(nowPlayingNav)
         tab.addChild(upcomingNav)
+//        tab.presentationController
 
         return tab
     }()
 }
 
-extension UIColor {
-
-    static var active: UIColor {
-        return UIColor(red: 0.986, green: 0.079, blue: 0.000, alpha: 1)
-    }
-
-}
+//extension TabBarPresenter()

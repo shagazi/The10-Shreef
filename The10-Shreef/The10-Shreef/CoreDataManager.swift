@@ -15,7 +15,7 @@ class CoreDataManager: NSObject {
     static let shared: CoreDataManager = CoreDataManager()
 
     class func setUpCoreDataStack() {
-        let container = NSPersistentContainer(name: "CoreData")
+        let container = NSPersistentContainer(name: "The10-Shreef")
         container.loadPersistentStores { (store, error) in
             guard error == nil else { NSLog("Failed to load core data stack!"); return }
             shared.context = container.viewContext

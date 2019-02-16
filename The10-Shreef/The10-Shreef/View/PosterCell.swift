@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 class PosterCell: UICollectionViewCell {
 
     @IBOutlet weak var posterImage: UIImageView!
-    @IBOutlet weak var synopsisView: UITextView!
+    @IBOutlet weak var overView: UITextView!
     @IBOutlet weak var trailerButton: UIButton!
+    @IBOutlet weak var imdbLabel: UILabel!
+    @IBOutlet weak var additionalLabel: UILabel!
+    @IBOutlet weak var additionalImage: UIImageView!
 
     var trailerID: String = ""
+    let interactor = Interactor()
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.posterImage.layer.shadowColor = UIColor.white.cgColor
         self.posterImage.layer.shadowRadius = 5
         trailerButton.addTarget(self, action: #selector(playTrailer), for: .touchUpInside)
@@ -33,10 +37,42 @@ class PosterCell: UICollectionViewCell {
 //        tab.present(NowPlayingVC(), animated: true, completion: nil)
     }
 
-    func configure(with posterImage: UIImage) {
-        self.posterImage.image = posterImage
+    func configureNowPlaying(with movie: NowPlaying) {
+        interactor.fetchPoster(posterPath: movie.posterPath) { (image) in
+            if let image = image {
+                self.posterImage.image = image
+            }
+        }
+        overView.text = movie.overView
+        self.overView.scrollRangeToVisible(NSMakeRange(0,1))
+        if movie.imdb.imdbScore == "N/A" {
+            imdbLabel.text = "N/A"
+            setEmptyLabel()
+        }
+        else {
+            imdbLabel.text = movie.imdb.imdbScore
+        }
+        additionalLabel.text = movie.imdb.rottenTomatoes
+        let rtScore = movie.imdb.rottenTomatoes.replacingOccurrences(of: "%", with: "")
+        if let rtScore = Int(rtScore) {
+            if rtScore >= 60 {
+                additionalImage.image = #imageLiteral(resourceName: "icons8-tomato-48")
+                additionalLabel.textColor = UIColor.tomatoColor
+            }
+            else {
+                additionalImage.image = #imageLiteral(resourceName: "icons8-rotten-tomatoes-48")
+                additionalLabel.textColor = UIColor.rottenColor
+            }
+        }
+        if movie.imdb.rottenTomatoes == "" {
+            setEmptyLabel()
+        }
     }
 
+    func setEmptyLabel() {
+        additionalLabel.text = ""
+        additionalImage.image = nil
+    }
 }
 
 extension PosterCell: UIViewControllerTransitioningDelegate {

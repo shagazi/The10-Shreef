@@ -10,20 +10,18 @@ import UIKit
 import TMDBSwift
 import YouTubePlayer
 import AnimatedCollectionViewLayout
+import CoreData
 
 class NowPlayingVC: UIViewController {
-//    @IBOutlet weak var video:           YouTubePlayerView!
     @IBOutlet weak var collectionView:  ScrollingPagesView!
-//    @IBOutlet weak var reviewView:      UITextView!
 
-    var nowPlayingInfo: VideosMDB?
-    var nowPlaying: [MovieMDB]  = []
-    var movies: [NowPlaying] = [] //fetch movies
-    let interactor = Interactor()
-    var reuseIdentifier = "poster"
-    var youTubeId = String()
-
-    //    var nowplaying = NowPlaying.createNew()
+    var movies : [NowPlaying]               = []
+    let interactor                          = Interactor()
+    let reuseIdentifier                     = "poster"
+    let imdbIdPath                          = "imdbIdPath"
+    let trailerPath                         = "trailerPath"
+    let idString                            = "id"
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -32,6 +30,7 @@ class NowPlayingVC: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         self.title = "In Theaters"
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -40,7 +39,7 @@ class NowPlayingVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let context = appDelegate.persistentContainer.viewContext
         self.view.backgroundColor = UIColor.black
 
         self.collectionView.dataSource  = self
@@ -48,62 +47,77 @@ class NowPlayingVC: UIViewController {
 
         let nib = UINib(nibName: "PosterCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
-
         
         MovieMDB.nowplaying(page: 1) { (client, movies) in
             guard let movies = movies else { return }
             for i in 0...9 {
-                self.nowPlaying.append(movies[i])
-                MovieMDB.videos(movieID: movies[i].id, completion: { (client, videos) in
-                    guard let videos = videos else { return }
-                    for video in videos {
-                        if video.type == "Trailer" {
-                            self.nowPlayingInfo = video
-                            break
-                        }
-                    }
-                })
+                let movie = NSEntityDescription.insertNewObject(forEntityName: "NowPlaying", into: context) as! NowPlaying
+                movie.parseMovie(data: movies[i])
             }
-            self.collectionView.reloadData()
+            self.movies = self.fetchMovies()
+            self.movies.forEach({ (movie) in
+                MovieMDB.videos(movieID: Int(movie.id), completion: { (client , trailers) in
+                    let trailer = NSEntityDescription.insertNewObject(forEntityName: "Trailer", into: context) as! Trailer
+                    guard let trailers = trailers else { return }
+                    trailer.parse(client: client, results: trailers)
+                    let movie = self.fetch(with: trailer.id)
+                    movie.trailer = trailer
+                    self.collectionView.reloadData()
+                })
+                MovieMDB.movie(movieID: Int(movie.id), completion: { (client, imdbInfo) in
+                    let imdb = NSEntityDescription.insertNewObject(forEntityName: "Imdb", into: context) as! Imdb
+                    imdb.parse(client: client)
+                    let movie = self.fetch(with: imdb.id)
+                    movie.imdb = imdb
+                    self.interactor.fetchImdb(imdbID: imdb.path, completionHandler: { (data, error) in
+                        guard let data = data else { return }
+                        imdb.parse(imdbInfo: data)
+                    })
+                    self.collectionView.reloadData()
+
+                })
+            })
         }
+    }
 
-//        interactor.createNowPlaying(movies: nowPlaying, trailers: <#T##VideosMDB#>, imdb: <#T##imdbInfo#>)
-//    }
+    func fetch(with ID: String) -> NowPlaying {
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NowPlaying>(entityName: String("NowPlaying"))
+        request.predicate = NSPredicate(format: "id == %@", ID)
+        let fetchedObjects = try! context.fetch(request)
+        if let first = fetchedObjects.first {
+            return first
+        }
+        return NSEntityDescription.insertNewObject(forEntityName: "NowPlaying", into: context) as! NowPlaying
+    }
 
+    func fetchMovies() -> [NowPlaying] {
+        let request = NSFetchRequest<NowPlaying>(entityName: "NowPlaying")
+        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        return try! context.fetch(request)
+    }
 }
 
 extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.nowPlaying.count > 10 {
-            return 10
-        }
-        else {
-            return self.nowPlaying.count
-        }
+        self.movies = fetchMovies()
+        return self.movies.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PosterCell
         let movie = movies[indexPath.row]
-        interactor.fetchPoster(posterPath: movie.posterPath) { (image) in
-            if let image = image {
-                cell.posterImage.image = image
-            }
-        }
-        MovieMDB.videos(movieID: movie.id, completion: { (_, videos) in
-            guard let videos = videos else { return }
-            for video in videos {
-                if video.type == "Trailer" {
-                    self.nowPlayingInfo = video
-
-                    break
-                }
-            }
-        })
-        cell.synopsisView.text = movie.overView
+        cell.configureNowPlaying(with: movie)
         cell.clipsToBounds = false
         return cell
-
     }
 }
 
+extension NowPlayingVC: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        let vc = PresentationController(presentedViewController: presented, presenting: presenting)
+        return vc
+    }
+}

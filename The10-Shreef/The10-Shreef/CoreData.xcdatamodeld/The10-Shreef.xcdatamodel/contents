@@ -6,7 +6,7 @@
         <attribute name="imdbID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imdbRating" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overView" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="poster_path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rated" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trailerPath" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +18,7 @@
         <attribute name="vote_average" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NowPlaying" positionX="-63" positionY="-18" width="128" height="180"/>
-        <element name="UpComing" positionX="-36" positionY="9" width="128" height="105"/>
+        <element name="NowPlaying" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="UpComing" positionX="312.6875" positionY="12.72265625" width="128" height="105"/>
     </elements>
 </model>
