@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import YouTubePlayer
+import YoutubeKit
 
-class TrailerVC: UIViewController, YouTubePlayerDelegate {
-    @IBOutlet weak var trailerView: YouTubePlayerView!
+class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
+    @IBOutlet weak var trailerView: UIView!
     @IBOutlet weak var ratedLabel: UILabel!
     @IBOutlet weak var directedLabel: UILabel!
     @IBOutlet weak var runTimeLabel: UILabel!
-
+    var player: YTSwiftyPlayer!
     var trailerID: String = ""
     let movieInfo: Movie
 
@@ -33,16 +33,18 @@ class TrailerVC: UIViewController, YouTubePlayerDelegate {
         ratedLabel.text = movieInfo.imdb.rated
         directedLabel.text = movieInfo.imdb.director
         directedLabel.sizeToFit()
-
-//        trailerView.lo
-        trailerView.loadVideoID(trailerID)
-        trailerView.delegate = self
-//        trailerView.playerVars
     }
 
-//    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
-//
-//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        player = YTSwiftyPlayer(frame: CGRect(x: 0, y: 0, width: trailerView.frame.width, height: trailerView.frame.height), playerVars: [.videoID(movieInfo.trailer.path)])
+        trailerView.addSubview(player)
+        trailerView = player
+        player.delegate = self
+        player.loadPlayer()
+        
+    }
+
 
     /*
     // MARK: - Navigation
