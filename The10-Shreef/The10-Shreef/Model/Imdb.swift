@@ -6,7 +6,6 @@
 //  Copyright © 2019 Shreef Hagazi . All rights reserved.
 //
 
-import UIKit
 import CoreData
 import TMDBSwift
 

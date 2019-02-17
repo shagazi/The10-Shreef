@@ -94,7 +94,7 @@ class NowPlayingVC: UIViewController {
 
 }
 
-extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate {
+extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.movies = Movie.fetchObjects(with: "type", with: movieType)
         return self.movies.count
@@ -114,6 +114,10 @@ extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate {
         if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
             self.pageControl.currentPage = visibleIndexPath.row
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
     }
 }
 

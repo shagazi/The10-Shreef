@@ -22,11 +22,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZSK-ol-UNV" customClass="ScrollingPagesView" customModule="The10_Shreef" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="36" width="375" height="611"/>
+                    <rect key="frame" x="16" y="36" width="343" height="588"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="611" id="6DH-g0-j9t"/>
-                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="5" id="yJ2-pB-3Ot">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="50" height="50"/>
@@ -35,20 +32,19 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="Umo-gF-i1P">
-                    <rect key="frame" x="168" y="643" width="39" height="18"/>
+                    <rect key="frame" x="168" y="624" width="39" height="37"/>
                     <color key="currentPageIndicatorTintColor" red="0.98593085999999996" green="0.078524761829999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </pageControl>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Umo-gF-i1P" secondAttribute="bottom" constant="6" id="COe-hg-67i"/>
-                <constraint firstAttribute="bottom" secondItem="ZSK-ol-UNV" secondAttribute="bottom" constant="20" id="IkF-Wp-eHN"/>
-                <constraint firstItem="ZSK-ol-UNV" firstAttribute="leading" secondItem="Xb8-Ew-5vr" secondAttribute="leading" id="WDs-Se-oiT"/>
+                <constraint firstItem="ZSK-ol-UNV" firstAttribute="leading" secondItem="Xb8-Ew-5vr" secondAttribute="leading" constant="16" id="WDs-Se-oiT"/>
                 <constraint firstAttribute="trailing" secondItem="Umo-gF-i1P" secondAttribute="trailing" constant="168" id="Zr0-3F-FHH"/>
                 <constraint firstItem="Umo-gF-i1P" firstAttribute="leading" secondItem="Xb8-Ew-5vr" secondAttribute="leading" constant="168" id="h61-PR-gZW"/>
-                <constraint firstItem="Umo-gF-i1P" firstAttribute="top" secondItem="ZSK-ol-UNV" secondAttribute="bottom" constant="-4" id="hFE-jj-f8o"/>
+                <constraint firstItem="Umo-gF-i1P" firstAttribute="top" secondItem="ZSK-ol-UNV" secondAttribute="bottom" id="hFE-jj-f8o"/>
                 <constraint firstItem="ZSK-ol-UNV" firstAttribute="top" secondItem="Xb8-Ew-5vr" secondAttribute="top" constant="36" id="ocU-Qh-p2s"/>
-                <constraint firstAttribute="trailing" secondItem="ZSK-ol-UNV" secondAttribute="trailing" id="zeV-bz-Edu"/>
+                <constraint firstAttribute="trailing" secondItem="ZSK-ol-UNV" secondAttribute="trailing" constant="16" id="zeV-bz-Edu"/>
             </constraints>
             <point key="canvasLocation" x="130.40000000000001" y="152.47376311844079"/>
         </view>

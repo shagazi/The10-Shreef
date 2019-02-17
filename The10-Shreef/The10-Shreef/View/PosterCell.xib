@@ -20,20 +20,20 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Uh-8P-cX8">
-                        <rect key="frame" x="16" y="20" width="268" height="450"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="450" id="IX2-bV-aCr"/>
-                        </constraints>
+                        <rect key="frame" x="16" y="28" width="268" height="400"/>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="4uk-TL-KAg">
-                        <rect key="frame" x="16" y="512" width="268" height="146"/>
+                        <rect key="frame" x="16" y="470" width="268" height="188"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="188" id="Oab-V6-yYu"/>
+                        </constraints>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgm-Fx-FrC">
-                        <rect key="frame" x="132" y="476" width="36" height="36"/>
+                        <rect key="frame" x="132" y="434" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Lgm-Fx-FrC" secondAttribute="height" multiplier="1:1" id="HwE-Ti-e9R"/>
                         </constraints>
@@ -43,22 +43,22 @@
                         </state>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Pj-8c-hZV">
-                        <rect key="frame" x="246" y="476" width="36" height="36"/>
+                        <rect key="frame" x="246" y="434" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="4Pj-8c-hZV" secondAttribute="height" multiplier="1:1" id="Czu-13-JE6"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-imdb-48" translatesAutoresizingMaskIntoConstraints="NO" id="4Xx-BM-ZgM">
-                        <rect key="frame" x="20" y="476" width="36" height="36"/>
+                        <rect key="frame" x="20" y="434" width="36" height="36"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJz-C8-Nzc">
-                        <rect key="frame" x="63" y="484" width="64" height="21"/>
+                        <rect key="frame" x="63" y="442" width="64" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.99917107819999995" green="0.75807785989999998" blue="0.027933845299999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqL-mf-nm6">
-                        <rect key="frame" x="180" y="484" width="63" height="21"/>
+                        <rect key="frame" x="180" y="442" width="63" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
             </view>
             <constraints>
                 <constraint firstItem="4Xx-BM-ZgM" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="02R-Mr-H2d"/>
-                <constraint firstItem="4Uh-8P-cX8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="0Vp-Ie-iEr"/>
+                <constraint firstItem="4Uh-8P-cX8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" constant="8" id="0Vp-Ie-iEr"/>
                 <constraint firstItem="gqL-mf-nm6" firstAttribute="centerY" secondItem="4Pj-8c-hZV" secondAttribute="centerY" id="3gs-Ac-s3I"/>
                 <constraint firstAttribute="trailing" secondItem="4uk-TL-KAg" secondAttribute="trailing" constant="16" id="ADd-4Q-uUc"/>
                 <constraint firstItem="4Xx-BM-ZgM" firstAttribute="centerY" secondItem="Lgm-Fx-FrC" secondAttribute="centerY" id="MKq-yY-oB4"/>
@@ -99,7 +99,7 @@
                 <outlet property="posterImage" destination="4Uh-8P-cX8" id="LT8-7z-nuV"/>
                 <outlet property="trailerButton" destination="Lgm-Fx-FrC" id="UXC-xB-9cc"/>
             </connections>
-            <point key="canvasLocation" x="164.80000000000001" y="182.60869565217394"/>
+            <point key="canvasLocation" x="59" y="90"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -26,6 +26,7 @@ class PosterCell: UICollectionViewCell {
         super.awakeFromNib()
         self.posterImage.layer.shadowColor = UIColor.white.cgColor
         self.posterImage.layer.shadowRadius = 5
+        self.clipsToBounds = true
         trailerButton.addTarget(self, action: #selector(playTrailer), for: .touchUpInside)
     }
 

@@ -22,11 +22,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7Ya-lY-0NK" customClass="ScrollingPagesView" customModule="The10_Shreef" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="36" width="375" height="611"/>
+                    <rect key="frame" x="16" y="36" width="343" height="588"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="611" id="s2X-Ot-qmb"/>
-                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="5" id="mul-aI-Wix">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="50" height="50"/>
@@ -35,20 +32,19 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gsh-bm-u2I">
-                    <rect key="frame" x="168" y="643" width="39" height="18"/>
+                    <rect key="frame" x="168" y="624" width="39" height="37"/>
                     <color key="currentPageIndicatorTintColor" red="0.98593085999999996" green="0.23648709060000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </pageControl>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Gsh-bm-u2I" secondAttribute="trailing" constant="168" id="5RE-bc-B5s"/>
-                <constraint firstItem="7Ya-lY-0NK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5tZ-Ty-ZZA"/>
-                <constraint firstAttribute="trailing" secondItem="7Ya-lY-0NK" secondAttribute="trailing" id="9Re-kv-rOj"/>
-                <constraint firstAttribute="bottom" secondItem="7Ya-lY-0NK" secondAttribute="bottom" constant="20" id="NnB-D5-NIY"/>
+                <constraint firstItem="7Ya-lY-0NK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="5tZ-Ty-ZZA"/>
+                <constraint firstAttribute="trailing" secondItem="7Ya-lY-0NK" secondAttribute="trailing" constant="16" id="9Re-kv-rOj"/>
+                <constraint firstItem="Gsh-bm-u2I" firstAttribute="top" secondItem="7Ya-lY-0NK" secondAttribute="bottom" id="F8D-Ye-EjD"/>
                 <constraint firstAttribute="bottom" secondItem="Gsh-bm-u2I" secondAttribute="bottom" constant="6" id="UZj-rX-Gi1"/>
                 <constraint firstItem="Gsh-bm-u2I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="168" id="afJ-Kd-97f"/>
                 <constraint firstItem="7Ya-lY-0NK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="mTY-39-iEk"/>
-                <constraint firstItem="Gsh-bm-u2I" firstAttribute="top" secondItem="7Ya-lY-0NK" secondAttribute="bottom" constant="-4" id="snK-KI-Dfp"/>
             </constraints>
             <point key="canvasLocation" x="130.40000000000001" y="152.47376311844079"/>
         </view>
