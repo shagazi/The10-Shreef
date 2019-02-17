@@ -30,7 +30,6 @@
 		9E688AC52213A8090018C189 /* The10_Shreef.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E688AC32213A8090018C189 /* The10_Shreef.xcdatamodeld */; };
 		9E688AC72213A80D0018C189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E688AC62213A80D0018C189 /* Assets.xcassets */; };
 		9E688ACA2213A80D0018C189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E688AC82213A80D0018C189 /* LaunchScreen.storyboard */; };
-		9E688ADA2213B3ED0018C189 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E688AD92213B3ED0018C189 /* Alamofire.framework */; };
 		9EF1E27F221601A600A9D16C /* TrailerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E27D221601A600A9D16C /* TrailerVC.swift */; };
 		9EF1E280221601A600A9D16C /* TrailerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF1E27E221601A600A9D16C /* TrailerVC.xib */; };
 		9EF1E2822216132300A9D16C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF1E2812216132300A9D16C /* Movie.swift */; };
@@ -79,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E688ADA2213B3ED0018C189 /* Alamofire.framework in Frameworks */,
 				1823C40A285F7DD09F8E1ACE /* Pods_The10_Shreef.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,31 +295,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-The10-Shreef/Pods-The10-Shreef-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSCognitoAuth/AWSCognitoAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AnimatedCollectionViewLayout/AnimatedCollectionViewLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/Novagraph/Novagraph.framework",
 				"${BUILT_PRODUCTS_DIR}/TMDBSwift/TMDBSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/YoutubeKit/YoutubeKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedCollectionViewLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Novagraph.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TMDBSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouTubePlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YoutubeKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

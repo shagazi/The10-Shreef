@@ -1,56 +1,28 @@
 PODS:
-  - Alamofire (4.8.1)
   - AnimatedCollectionViewLayout (0.5.0)
-  - AWSCognito (2.8.4):
-    - AWSCore (= 2.8.4)
-  - AWSCognitoAuth (2.8.4):
-    - AWSCognitoIdentityProviderASF (= 1.0.1)
-  - AWSCognitoIdentityProvider (2.8.4):
-    - AWSCognitoIdentityProviderASF (= 1.0.1)
-    - AWSCore (= 2.8.4)
-  - AWSCognitoIdentityProviderASF (1.0.1)
-  - AWSCore (2.8.4)
-  - Novagraph (1.1.1):
-    - Alamofire
-    - AWSCognito (~> 2.8.2)
-    - AWSCognitoAuth (~> 2.8.2)
-    - AWSCognitoIdentityProvider (~> 2.8.2)
   - TMDBSwift (0.5.1)
+  - YoutubeKit (0.3.0)
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
-  - Alamofire
   - AnimatedCollectionViewLayout
-  - Novagraph
   - TMDBSwift
+  - YoutubeKit
   - YouTubePlayer
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - AnimatedCollectionViewLayout
-    - AWSCognito
-    - AWSCognitoAuth
-    - AWSCognitoIdentityProvider
-    - AWSCognitoIdentityProviderASF
-    - AWSCore
     - TMDBSwift
+    - YoutubeKit
     - YouTubePlayer
-  https://github.com/sophaz/cocoapods.git:
-    - Novagraph
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AnimatedCollectionViewLayout: 8b660a623d85001f76f00f0d2302a7b043c72bda
-  AWSCognito: d7f7e9aaa26f163fe2d32114e28f59fa5d996805
-  AWSCognitoAuth: e96b8b4bb6b6c0a340cdcf2de5722a692144d157
-  AWSCognitoIdentityProvider: ba1858e7524b29254172ae333e1f96ddc93507dc
-  AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
-  AWSCore: 734b0d67c2c77f6edae9e5520431a37310ea4193
-  Novagraph: ece25fd0c0439a1094f91c5251a4a81fad3756c6
   TMDBSwift: 9220f3dcee23372c05b92f8c111f5f4c37185aee
+  YoutubeKit: a00e9eebcb3cfe26d7e233c5f8591dfd0b08f7a0
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: 978d2308544782edf14c33a78cf504c10b81d2e8
+PODFILE CHECKSUM: 6685a2118d75121182c2487253eaa3a9212f1859
 
 COCOAPODS: 1.5.3

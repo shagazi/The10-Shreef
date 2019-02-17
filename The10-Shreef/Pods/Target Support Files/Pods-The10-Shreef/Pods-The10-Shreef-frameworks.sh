@@ -143,28 +143,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoAuth/AWSCognitoAuth.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AnimatedCollectionViewLayout/AnimatedCollectionViewLayout.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Novagraph/Novagraph.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TMDBSwift/TMDBSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YoutubeKit/YoutubeKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoAuth/AWSCognitoAuth.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AnimatedCollectionViewLayout/AnimatedCollectionViewLayout.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Novagraph/Novagraph.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TMDBSwift/TMDBSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YoutubeKit/YoutubeKit.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
