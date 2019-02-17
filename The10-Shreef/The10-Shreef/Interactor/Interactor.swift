@@ -9,28 +9,60 @@
 import TMDBSwift
 import CoreData
 
-class Interactor: NSObject {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+protocol FetchOrCreate: class, HasId {
+    associatedtype T: NSManagedObject, HasId
+}
 
-    func fetch(with type: String, with value: String) -> [Movie] {
+protocol HasId {
+    var id: String { get set }
+}
+
+extension FetchOrCreate {
+//    static func fetchOrCreate(with ID: String) -> T {
+//        if let object = fetch(with: ID) {
+//            return object
+//        }
+//        else {
+//            var object = createNew()
+//            object.id = ID
+//            return object
+//        }
+//    }
+
+    static func createNew() -> T {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<Movie>(entityName: String("Movie"))
-        request.predicate = NSPredicate(format: "\(type) == %@", value)
+        let className = String(describing: type(of: self)).split(separator:".").first ?? ""
+        let newT = NSEntityDescription.insertNewObject(forEntityName: String(className), into: context) as! T
+        return newT
+    }
+
+    static func fetchObjects(with key: String, with value: String) -> [T] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let className = String(describing: type(of: self)).split(separator:".").first ?? ""
+        let request = NSFetchRequest<T>(entityName: String(className))
+        request.predicate = NSPredicate(format: "\(key) == %@", value)
         let fetchedObjects = try! context.fetch(request)
         return fetchedObjects
     }
 
-    func fetch(with ID: String) -> Movie {
+    static func fetch(with ID: String) -> T? {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<Movie>(entityName: String("Movie"))
+        let className = String(describing: type(of: self)).split(separator:".").first ?? ""
+        let request = NSFetchRequest<T>(entityName: String(className))
         request.predicate = NSPredicate(format: "id == %@", ID)
         let fetchedObjects = try! context.fetch(request)
         if let first = fetchedObjects.first {
             return first
         }
-        return NSEntityDescription.insertNewObject(forEntityName: "Movie", into: context) as! Movie
+        return nil
     }
 
+}
+
+class Interactor: NSObject {
     func fetchImdb(imdbID: String, completionHandler: @escaping ((imdbInfo?, Error?) -> Void)) {
         var components          = URLComponents()
         components.scheme       = "https"

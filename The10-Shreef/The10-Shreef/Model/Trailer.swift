@@ -11,7 +11,9 @@ import CoreData
 import TMDBSwift
 
 @objc(Trailer)
-class Trailer: NSManagedObject {
+class Trailer: NSManagedObject, FetchOrCreate, HasId {
+    typealias T = Trailer
+    
     @NSManaged var id: String
     @NSManaged var path: String
 

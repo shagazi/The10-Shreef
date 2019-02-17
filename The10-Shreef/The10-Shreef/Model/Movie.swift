@@ -10,7 +10,9 @@ import CoreData
 import TMDBSwift
 
 @objc(Movie)
-class Movie: NSManagedObject {
+class Movie: NSManagedObject, FetchOrCreate, HasId {
+    typealias T = Movie
+
     @NSManaged var id          : String
     @NSManaged var title       : String
     @NSManaged var posterPath  : String
@@ -20,7 +22,7 @@ class Movie: NSManagedObject {
     @NSManaged var trailer     : Trailer
     @NSManaged var imdb        : Imdb
 
-    func parseMovie(data: MovieMDB){
+    func parse(data: MovieMDB){
         self.id = String(data.id)
         if let title = data.title {
             self.title = title

@@ -9,13 +9,18 @@
 import UIKit
 import YouTubePlayer
 
-class TrailerVC: UIViewController {
+class TrailerVC: UIViewController, YouTubePlayerDelegate {
     @IBOutlet weak var trailerView: YouTubePlayerView!
+    @IBOutlet weak var ratedLabel: UILabel!
+    @IBOutlet weak var directedLabel: UILabel!
+    @IBOutlet weak var runTimeLabel: UILabel!
 
-    var trailerID: String
+    var trailerID: String = ""
+    let movieInfo: Movie
 
-    init(trailerID: String) {
-        self.trailerID = trailerID
+    init(movie: Movie) {
+        self.trailerID = movie.trailer.path
+        movieInfo = movie
         super.init(nibName: "TrailerVC", bundle: nil)
     }
 
@@ -25,10 +30,19 @@ class TrailerVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ratedLabel.text = movieInfo.imdb.rated
+        directedLabel.text = movieInfo.imdb.director
+        directedLabel.sizeToFit()
+
+//        trailerView.lo
         trailerView.loadVideoID(trailerID)
+        trailerView.delegate = self
+//        trailerView.playerVars
     }
 
+//    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
+//
+//    }
 
     /*
     // MARK: - Navigation

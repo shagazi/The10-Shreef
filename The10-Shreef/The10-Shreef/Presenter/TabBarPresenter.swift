@@ -27,14 +27,11 @@ class TabBarPresenter {
 
         let nowPlayingVC = NowPlayingVC()
         let nowPlayingNav = UINavigationController(rootViewController: nowPlayingVC)
-//        nowPlayingNav.isNavigationBarHidden = true
         nowPlayingNav.navigationBar.isHidden = true
 
         let upcomingVC = UpcomingVC()
         let upcomingNav = UINavigationController(rootViewController: upcomingVC)
-//        upcomingNav.isNavigationBarHidden = true
         upcomingNav.navigationBar.isHidden = true
-
 
 //        tab.selectedIndex = 0
 
@@ -46,4 +43,10 @@ class TabBarPresenter {
     }()
 }
 
-//extension TabBarPresenter()
+extension UITabBar {
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        var sizeThatFits = super.sizeThatFits(size)
+        sizeThatFits.height = 60
+        return sizeThatFits
+    }
+}

@@ -17,7 +17,8 @@ import CoreData
 
 class UpcomingVC: UIViewController {
     @IBOutlet weak var collectionView:  ScrollingPagesView!
-
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     var movies: [Movie]  = []
     let interactor       = Interactor()
     let reuseIdentifier  = "poster"
@@ -25,7 +26,6 @@ class UpcomingVC: UIViewController {
     let trailerPath      = "trailerPath"
     let idString         = "id"
     let movieType        = "Coming Soon"
-    let appDelegate      = UIApplication.shared.delegate as! AppDelegate
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -54,30 +54,33 @@ class UpcomingVC: UIViewController {
     }
 
     func fetchMovieData(movieType: String) {
-        let context = appDelegate.persistentContainer.viewContext
-
         MovieMDB.upcoming(page: 1) { (client, movies) in
             guard let movies = movies else { return }
             for i in 0...9 {
-                let movie = NSEntityDescription.insertNewObject(forEntityName: "Movie", into: context) as! Movie
-                movie.parseMovie(data: movies[i])
+                let movie = Movie.createNew()
+                movie.parse(data: movies[i])
                 movie.type = movieType
             }
-            self.movies = self.interactor.fetch(with: "type", with: movieType)
+            self.movies = Movie.fetchObjects(with: "type", with: movieType)
             self.movies.forEach({ (movie) in
                 MovieMDB.videos(movieID: Int(movie.id), completion: { (client , trailers) in
-                    let trailer = NSEntityDescription.insertNewObject(forEntityName: "Trailer", into: context) as! Trailer
                     guard let trailers = trailers else { return }
+
+                    let trailer = Trailer.createNew()
                     trailer.parse(client: client, results: trailers)
-                    let movie = self.interactor.fetch(with: trailer.id)
-                    movie.trailer = trailer
+
+                    let movie = Movie.fetch(with: trailer.id)
+                    movie?.trailer = trailer
+
                     self.collectionView.reloadData()
                 })
                 MovieMDB.movie(movieID: Int(movie.id), completion: { (client, imdbInfo) in
-                    let imdb = NSEntityDescription.insertNewObject(forEntityName: "Imdb", into: context) as! Imdb
+                    let imdb = Imdb.createNew()
                     imdb.parse(client: client)
-                    let movie = self.interactor.fetch(with: imdb.id)
-                    movie.imdb = imdb
+
+                    let movie = Movie.fetch(with: imdb.id)
+                    movie?.imdb = imdb
+                    
                     self.interactor.fetchImdb(imdbID: imdb.path, completionHandler: { (data, error) in
                         guard let data = data else { return }
                         imdb.parse(imdbInfo: data)
@@ -92,7 +95,7 @@ class UpcomingVC: UIViewController {
 
 extension UpcomingVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.movies = interactor.fetch(with: "type", with: movieType)
+        self.movies = Movie.fetchObjects(with: "type", with: movieType)
         return self.movies.count
     }
 
@@ -102,6 +105,14 @@ extension UpcomingVC: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.configureNowPlaying(with: movie)
         cell.clipsToBounds = false
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
+            self.pageControl.currentPage = visibleIndexPath.row
+        }
     }
 }
 

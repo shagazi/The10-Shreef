@@ -11,7 +11,9 @@ import CoreData
 import TMDBSwift
 
 @objc(Imdb)
-class Imdb: NSManagedObject  {
+class Imdb: NSManagedObject, FetchOrCreate, HasId {
+    typealias T = Imdb
+    
     @NSManaged var id             : String
     @NSManaged var path           : String
     @NSManaged var rated          : String

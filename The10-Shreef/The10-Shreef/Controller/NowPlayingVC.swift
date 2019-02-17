@@ -14,6 +14,7 @@ import CoreData
 
 class NowPlayingVC: UIViewController {
     @IBOutlet weak var collectionView:  ScrollingPagesView!
+    @IBOutlet weak var pageControl: UIPageControl!
 
     var movies: [Movie]  = []
     let interactor       = Interactor()
@@ -22,7 +23,7 @@ class NowPlayingVC: UIViewController {
     let trailerPath      = "trailerPath"
     let idString         = "id"
     let movieType        = "Now Playing"
-    let appDelegate      = UIApplication.shared.delegate as! AppDelegate
+    lazy var defaultTabBarHeigt = TabBarPresenter.mainViewController.tabBarController?.tabBar.frame
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -48,34 +49,40 @@ class NowPlayingVC: UIViewController {
         self.collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
         fetchMovieData(movieType: movieType)
+
+
     }
 
     func fetchMovieData(movieType: String) {
-        let context = appDelegate.persistentContainer.viewContext
 
-        MovieMDB.nowplaying(page: 1) { (client, movies) in
+        MovieMDB.nowplaying(page: 1) { (_, movies) in
             guard let movies = movies else { return }
             for i in 0...9 {
-                let movie = NSEntityDescription.insertNewObject(forEntityName: "Movie", into: context) as! Movie
-                movie.parseMovie(data: movies[i])
+                let movie = Movie.createNew()
+                movie.parse(data: movies[i])
                 movie.type = movieType
             }
-            self.movies = self.interactor.fetch(with: "type", with: movieType)
+            self.movies = Movie.fetchObjects(with: "type", with: movieType)
             self.movies.forEach({ (movie) in
                 MovieMDB.videos(movieID: Int(movie.id), completion: { (client , trailers) in
-                    let trailer = NSEntityDescription.insertNewObject(forEntityName: "Trailer", into: context) as! Trailer
                     guard let trailers = trailers else { return }
+
+                    let trailer = Trailer.createNew()
                     trailer.parse(client: client, results: trailers)
-                    let movie = self.interactor.fetch(with: trailer.id)
-                    movie.trailer = trailer
+
+                    let movie = Movie.fetch(with: trailer.id)
+                    movie?.trailer = trailer
+
                     self.collectionView.reloadData()
                 })
-                MovieMDB.movie(movieID: Int(movie.id), completion: { (client, imdbInfo) in
-                    let imdb = NSEntityDescription.insertNewObject(forEntityName: "Imdb", into: context) as! Imdb
+                MovieMDB.movie(movieID: Int(movie.id), completion: { (client, _) in
+                    let imdb = Imdb.createNew()
                     imdb.parse(client: client)
-                    let movie = self.interactor.fetch(with: imdb.id)
-                    movie.imdb = imdb
-                    self.interactor.fetchImdb(imdbID: imdb.path, completionHandler: { (data, error) in
+
+                    let movie = Movie.fetch(with: imdb.id)
+                    movie?.imdb = imdb
+
+                    self.interactor.fetchImdb(imdbID: imdb.path, completionHandler: { (data, _) in
                         guard let data = data else { return }
                         imdb.parse(imdbInfo: data)
                     })
@@ -84,12 +91,12 @@ class NowPlayingVC: UIViewController {
             })
         }
     }
-}
 
+}
 
 extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.movies = interactor.fetch(with: "type", with: movieType)
+        self.movies = Movie.fetchObjects(with: "type", with: movieType)
         return self.movies.count
     }
 
@@ -99,6 +106,14 @@ extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.configureNowPlaying(with: movie)
         cell.clipsToBounds = false
         return cell
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
+            self.pageControl.currentPage = visibleIndexPath.row
+        }
     }
 }
 

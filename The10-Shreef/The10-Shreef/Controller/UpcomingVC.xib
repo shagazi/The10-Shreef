@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpcomingVC" customModule="The10_Shreef" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="ZSK-ol-UNV" id="LEW-hj-fMn"/>
+                <outlet property="pageControl" destination="Umo-gF-i1P" id="BRJ-Ap-umg"/>
                 <outlet property="view" destination="Xb8-Ew-5vr" id="0es-5W-nK2"/>
             </connections>
         </placeholder>
@@ -20,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZSK-ol-UNV" customClass="ScrollingPagesView" customModule="The10_Shreef" customModuleProvider="target">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZSK-ol-UNV" customClass="ScrollingPagesView" customModule="The10_Shreef" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="36" width="375" height="611"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -33,11 +34,19 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="Umo-gF-i1P">
+                    <rect key="frame" x="168" y="643" width="39" height="18"/>
+                    <color key="currentPageIndicatorTintColor" red="0.98593085999999996" green="0.078524761829999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="Umo-gF-i1P" secondAttribute="bottom" constant="6" id="COe-hg-67i"/>
                 <constraint firstAttribute="bottom" secondItem="ZSK-ol-UNV" secondAttribute="bottom" constant="20" id="IkF-Wp-eHN"/>
                 <constraint firstItem="ZSK-ol-UNV" firstAttribute="leading" secondItem="Xb8-Ew-5vr" secondAttribute="leading" id="WDs-Se-oiT"/>
+                <constraint firstAttribute="trailing" secondItem="Umo-gF-i1P" secondAttribute="trailing" constant="168" id="Zr0-3F-FHH"/>
+                <constraint firstItem="Umo-gF-i1P" firstAttribute="leading" secondItem="Xb8-Ew-5vr" secondAttribute="leading" constant="168" id="h61-PR-gZW"/>
+                <constraint firstItem="Umo-gF-i1P" firstAttribute="top" secondItem="ZSK-ol-UNV" secondAttribute="bottom" constant="-4" id="hFE-jj-f8o"/>
                 <constraint firstItem="ZSK-ol-UNV" firstAttribute="top" secondItem="Xb8-Ew-5vr" secondAttribute="top" constant="36" id="ocU-Qh-p2s"/>
                 <constraint firstAttribute="trailing" secondItem="ZSK-ol-UNV" secondAttribute="trailing" id="zeV-bz-Edu"/>
             </constraints>

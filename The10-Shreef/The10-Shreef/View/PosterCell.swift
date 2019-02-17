@@ -19,7 +19,7 @@ class PosterCell: UICollectionViewCell {
     @IBOutlet weak var additionalImage: UIImageView!
     @IBOutlet weak var imdbImage: UIImageView!
 
-    let trailerID = ""
+    var movieInfo = Movie()
     let interactor = Interactor()
 
     override func awakeFromNib() {
@@ -31,14 +31,13 @@ class PosterCell: UICollectionViewCell {
 
     @objc func playTrailer() {
         let tab = TabBarPresenter.mainViewController
-        let vc = TrailerVC(trailerID: trailerID)
-        tab.present(vc, animated: true, completion: nil)
+        let vc = TrailerVC(movie: movieInfo)
         tab.modalPresentationStyle = .overCurrentContext
-        tab.transitioningDelegate = self
-//        tab.present(NowPlayingVC(), animated: true, completion: nil)
+        tab.present(PopoverVC(viewController: vc), animated: true, completion: nil)
     }
 
     func configureNowPlaying(with movie: Movie) {
+        movieInfo = movie
         interactor.fetchPoster(posterPath: movie.posterPath) { (image) in
             if let image = image {
                 self.posterImage.image = image
@@ -47,7 +46,8 @@ class PosterCell: UICollectionViewCell {
         overView.text = movie.overView
         self.overView.scrollRangeToVisible(NSMakeRange(0,1))
         if movie.imdb.imdbScore == "N/A" || movie.imdb.imdbScore == "" {
-            setEmptyLabel()
+            imdbLabel.text = ""
+            imdbImage.image = nil
         }
         else {
             imdbLabel.text = movie.imdb.imdbScore
@@ -66,22 +66,9 @@ class PosterCell: UICollectionViewCell {
             }
         }
         if movie.imdb.rottenTomatoes == "" {
-            setEmptyLabel()
+            additionalLabel.text = ""
+            additionalImage.image = nil
         }
     }
 
-    func setEmptyLabel() {
-        imdbLabel.text = ""
-        imdbImage.image = nil
-        additionalLabel.text = ""
-        additionalImage.image = nil
-    }
-}
-
-extension PosterCell: UIViewControllerTransitioningDelegate {
-
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        let vc = PresentationController(presentedViewController: presented, presenting: presenting)
-        return vc
-    }
 }
