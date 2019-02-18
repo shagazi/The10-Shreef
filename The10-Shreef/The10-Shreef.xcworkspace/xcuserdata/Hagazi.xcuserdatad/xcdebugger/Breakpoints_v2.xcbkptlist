@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The10-Shreef/Controller/shared/PresentationController.swift"
-            timestampString = "572049833.360184"
+            timestampString = "572091686.4138989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The10-Shreef/Controller/shared/PresentationController.swift"
-            timestampString = "572049833.3603441"
+            timestampString = "572091686.413964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -58,61 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The10-Shreef/Controller/shared/PresentationController.swift"
-            timestampString = "572049833.360406"
+            timestampString = "572091686.414009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
             landmarkName = "init(presentedViewController:presenting:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "The10-Shreef/Controller/NowPlayingVC.swift"
-            timestampString = "572063489.652463"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "NowPlayingVC"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "The10_Shreef.NowPlayingVC.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;The10_Shreef.NowPlayingVC&gt;"
-                  moduleName = "The10-Shreef"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Hagazi/Desktop/Buildschool/movieApp/The10-Shreef/The10-Shreef/Controller/NowPlayingVC.swift"
-                  timestampString = "572063489.992641"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "The10_Shreef.NowPlayingVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;The10_Shreef.NowPlayingVC&gt;"
-                  moduleName = "The10-Shreef"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Hagazi/Desktop/Buildschool/movieApp/The10-Shreef/The10-Shreef/Controller/NowPlayingVC.swift"
-                  timestampString = "572063489.9949419"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

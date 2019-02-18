@@ -8,18 +8,21 @@
 
 import UIKit
 import YoutubeKit
+import CoreData
 
 class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
     @IBOutlet weak var trailerView: UIView!
     @IBOutlet weak var ratedLabel: UILabel!
     @IBOutlet weak var directedLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var runTimeLabel: UILabel!
+
     var player: YTSwiftyPlayer!
-    var trailerID: String = ""
-    let movieInfo: Movie
+    var movieInfo: Movie!
+    let interactor = Interactor()
+    var genres: [String] = []
 
     init(movie: Movie) {
-        self.trailerID = movie.trailer.path
         movieInfo = movie
         super.init(nibName: "TrailerVC", bundle: nil)
     }
@@ -30,9 +33,21 @@ class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ratedLabel.text = movieInfo.imdb.rated
-        directedLabel.text = movieInfo.imdb.director
+        ratedLabel.text = "Rated " + movieInfo.imdb.rated
+        ratedLabel.font = UIFont.mainItemFont()
+        ratedLabel.sizeToFit()
+
+        directedLabel.text = "Starring: " + movieInfo.imdb.actors
         directedLabel.sizeToFit()
+        directedLabel.font = UIFont.mainItemFont()
+
+        genreLabel.text = "Genres: " + movieInfo.imdb.genre
+        genreLabel.sizeToFit()
+        genreLabel.font = UIFont.mainItemFont()
+
+        runTimeLabel.text = movieInfo.imdb.runtime
+        runTimeLabel.font = UIFont.mainItemFont()
+        runTimeLabel.sizeToFit()
     }
 
     override func viewDidLayoutSubviews() {
@@ -42,18 +57,5 @@ class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
         trailerView = player
         player.delegate = self
         player.loadPlayer()
-        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

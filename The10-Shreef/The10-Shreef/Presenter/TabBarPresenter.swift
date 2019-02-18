@@ -33,14 +33,19 @@ class TabBarPresenter {
         let upcomingNav = UINavigationController(rootViewController: upcomingVC)
         upcomingNav.navigationBar.isHidden = true
 
-//        tab.selectedIndex = 0
-
         tab.addChild(nowPlayingNav)
         tab.addChild(upcomingNav)
-//        tab.presentationController
 
         return tab
     }()
+
+    static func setWindowRootVC(to viewController: UIViewController) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        UIView.transition(with: appDelegate.window!, duration: 3.0, options: .transitionCrossDissolve, animations: {
+            appDelegate.window?.rootViewController = viewController
+        }, completion: nil)
+    }
+
 }
 
 extension UITabBar {

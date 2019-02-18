@@ -12,4 +12,7 @@ struct imdbInfo: Codable {
     let imdbRating  : String?
     let imdbID      : String?
     let Ratings     : [[String : String]]?
+    let Actors      : String?
+    let Genre       : String?
+    let Runtime     : String?
 }

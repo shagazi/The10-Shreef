@@ -8,9 +8,9 @@
 
 import UIKit
 import CoreData
+import YoutubeKit
 
 class PosterCell: UICollectionViewCell {
-
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var overView: UITextView!
     @IBOutlet weak var trailerButton: UIButton!
@@ -37,22 +37,33 @@ class PosterCell: UICollectionViewCell {
         tab.present(PopoverVC(viewController: vc), animated: true, completion: nil)
     }
 
-    func configureNowPlaying(with movie: Movie) {
+    func configure(with movie: Movie) {
         movieInfo = movie
         interactor.fetchPoster(posterPath: movie.posterPath) { (image) in
             if let image = image {
                 self.posterImage.image = image
             }
         }
-        overView.text = movie.overView
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .justified
+        paragraphStyle.hyphenationFactor = 1.0
+        let font = UIFont.mainItemFont()
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor : UIColor.white
+        ]
+        let attributedText = NSAttributedString(string: movie.overView, attributes: attributes)
+        overView.attributedText = attributedText
         self.overView.scrollRangeToVisible(NSMakeRange(0,1))
         if movie.imdb.imdbScore == "N/A" || movie.imdb.imdbScore == "" {
             imdbLabel.text = ""
             imdbImage.image = nil
         }
         else {
-            imdbLabel.text = movie.imdb.imdbScore
+            imdbLabel.text = movie.imdb.imdbScore + "/10"
             imdbImage.image = #imageLiteral(resourceName: "icons8-imdb-48")
+    
         }
         additionalLabel.text = movie.imdb.rottenTomatoes
         let rtScore = movie.imdb.rottenTomatoes.replacingOccurrences(of: "%", with: "")
@@ -71,5 +82,4 @@ class PosterCell: UICollectionViewCell {
             additionalImage.image = nil
         }
     }
-
 }

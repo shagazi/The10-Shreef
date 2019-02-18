@@ -9,13 +9,10 @@
 import UIKit
 
 class PopoverVC: UIViewController {
-//    @IBOutlet weak var popOverBottomConstraint: NSLayoutConstraint!
-    //    @IBOutlet weak var popOverTopConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerView: UIView!
 
     private let containedVC: UIViewController
-//    private var containerMinY = NSLayoutConstraint().constant
+    private var containerSize = CGSize()
 
     init(viewController: UIViewController) {
         containedVC = viewController
@@ -35,28 +32,16 @@ class PopoverVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        containerView.layer.applyBorder(cornerRadius: 24)
-//        containerView.backgroundColor = UIColor.white
         containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
         containerView.layer.shadowColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 0.5).cgColor
         containerView.layer.shadowOpacity = 1
         containerView.layer.shadowRadius = 10
 
         containedVC.view.layer.cornerRadius = 24
-//
-//        let center = NotificationCenter.default
-//        center.addObserver(self,
-//                           selector: #selector(keyboardWillShow),
-//                           name: UIResponder.keyboardWillShowNotification,
-//                           object: nil)
-//
-//        center.addObserver(self,
-//                           selector: #selector(keyboardWillHide),
-//                           name: UIResponder.keyboardWillHideNotification,
-//                           object: nil)
+        containerSize = containedVC.view.bounds.size
 
         containerView.addSubview(containedVC.view)
-//        containerMinY = popOverTopConstraint.constant
+        containerView.constrain(subview: containedVC.view)
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissPopover))
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dismissPopover))
@@ -65,20 +50,16 @@ class PopoverVC: UIViewController {
         view.addGestureRecognizer(swipe)
         tap.cancelsTouchesInView = false
         swipe.cancelsTouchesInView = false
+
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        containedVC.view.frame.size = containerView.frame.size
-        containedVC.view.topAnchor.constraint(equalTo: containerView.topAnchor)
-        containedVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        containedVC.view.clipsToBounds = true
+        containerView.frame.size = containerSize
+        containedVC.view.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    // MARK: - Private
-
     @objc private func dismissPopover(_ sender: UIGestureRecognizer) {
-//        dismiss(animated: true, completion: nil)
         let location = sender.location(in: self.view)
         let viewToIgnore = self.view.hitTest(location, with: UIEvent())
         if viewToIgnore?.gestureRecognizers?.contains(sender) == .some(true) {
@@ -86,23 +67,4 @@ class PopoverVC: UIViewController {
             self.view.endEditing(true)
         }
     }
-//
-//    @objc private func keyboardWillShow(notification: NSNotification) {
-//        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-//        guard let keyboardAnimationDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) else { return }
-//        animateBottomConstraint(duration: keyboardAnimationDuration, topValue: 8, bottomValue: keyboardFrame.height - 20)
-//    }
-//
-//    @objc private func keyboardWillHide(notification: NSNotification) {
-//        guard let keyboardAnimationDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) else { return }
-//        animateBottomConstraint(duration: keyboardAnimationDuration, topValue: containerMinY, bottomValue: 20)
-//    }
-
-//    private func animateBottomConstraint(duration: Double, topValue: CGFloat, bottomValue: CGFloat) {
-//        UIView.animate(withDuration: duration) {
-//            self.popOverTopConstraint.constant = topValue
-//            self.popOverBottomConstraint.constant = bottomValue
-//            self.view.layoutIfNeeded()
-//        }
-//    }
 }

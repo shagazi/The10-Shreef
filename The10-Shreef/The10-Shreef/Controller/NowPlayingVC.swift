@@ -23,11 +23,6 @@ class NowPlayingVC: UIViewController {
     let trailerPath      = "trailerPath"
     let idString         = "id"
     let movieType        = "Now Playing"
-    lazy var defaultTabBarHeigt = TabBarPresenter.mainViewController.tabBarController?.tabBar.frame
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -48,47 +43,16 @@ class NowPlayingVC: UIViewController {
         let nib = UINib(nibName: "PosterCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
-        fetchMovieData(movieType: movieType)
-
-
-    }
-
-    func fetchMovieData(movieType: String) {
-
         MovieMDB.nowplaying(page: 1) { (_, movies) in
             guard let movies = movies else { return }
-            for i in 0...9 {
-                let movie = Movie.createNew()
-                movie.parse(data: movies[i])
-                movie.type = movieType
+            for i in movies {
+                let movie = Movie.fetchOrCreate(with: String(i.id))
+                movie.parse(data: i)
+                movie.type = self.movieType
             }
-            self.movies = Movie.fetchObjects(with: "type", with: movieType)
-            self.movies.forEach({ (movie) in
-                MovieMDB.videos(movieID: Int(movie.id), completion: { (client , trailers) in
-                    guard let trailers = trailers else { return }
-
-                    let trailer = Trailer.createNew()
-                    trailer.parse(client: client, results: trailers)
-
-                    let movie = Movie.fetch(with: trailer.id)
-                    movie?.trailer = trailer
-
-                    self.collectionView.reloadData()
-                })
-                MovieMDB.movie(movieID: Int(movie.id), completion: { (client, _) in
-                    let imdb = Imdb.createNew()
-                    imdb.parse(client: client)
-
-                    let movie = Movie.fetch(with: imdb.id)
-                    movie?.imdb = imdb
-
-                    self.interactor.fetchImdb(imdbID: imdb.path, completionHandler: { (data, _) in
-                        guard let data = data else { return }
-                        imdb.parse(imdbInfo: data)
-                    })
-                    self.collectionView.reloadData()
-                })
-            })
+            self.interactor.fetchMovieData(movieType: self.movieType) { (_) in
+                self.collectionView.reloadData()
+            }
         }
     }
 
@@ -97,13 +61,19 @@ class NowPlayingVC: UIViewController {
 extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.movies = Movie.fetchObjects(with: "type", with: movieType)
-        return self.movies.count
+        if self.movies.count > 10 {
+            self.movies.sort { $0.imdb.imdbScore > $1.imdb.imdbScore }
+            return 10
+        }
+        else {
+            return self.movies.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PosterCell
         let movie = movies[indexPath.row]
-        cell.configureNowPlaying(with: movie)
+        cell.configure(with: movie)
         cell.clipsToBounds = false
         return cell
     }
@@ -118,12 +88,5 @@ extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
-    }
-}
-
-extension NowPlayingVC: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        let vc = PresentationController(presentedViewController: presented, presenting: presenting)
-        return vc
     }
 }

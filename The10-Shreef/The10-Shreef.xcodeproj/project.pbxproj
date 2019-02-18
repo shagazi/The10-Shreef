@@ -16,8 +16,10 @@
 		9E09E5B92214E4F600AD166E /* ScrollingPagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5B82214E4F600AD166E /* ScrollingPagesView.swift */; };
 		9E09E5BE2214E6FE00AD166E /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09E5BC2214E6FE00AD166E /* PosterCell.swift */; };
 		9E09E5BF2214E6FE00AD166E /* PosterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E09E5BD2214E6FE00AD166E /* PosterCell.xib */; };
-		9E24F8482215FDA600D10805 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E24F8472215FDA600D10805 /* PresentationController.swift */; };
 		9E24F84B2215FEE500D10805 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E24F84A2215FEE500D10805 /* UIViewExtension.swift */; };
+		9E2FDB78221A858400741016 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FDB77221A858400741016 /* UIFontExtension.swift */; };
+		9E2FDB7F221AD64500741016 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FDB7D221AD64500741016 /* WelcomeVC.swift */; };
+		9E2FDB80221AD64500741016 /* WelcomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E2FDB7E221AD64500741016 /* WelcomeVC.xib */; };
 		9E33F13D221552D700239350 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E33F13C221552D700239350 /* TabBarPresenter.swift */; };
 		9E48AFCD2217CCE7000AA5A5 /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48AFCC2217CCE7000AA5A5 /* Trailer.swift */; };
 		9E48AFCF2217D2B9000AA5A5 /* Imdb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E48AFCE2217D2B9000AA5A5 /* Imdb.swift */; };
@@ -47,8 +49,10 @@
 		9E09E5B82214E4F600AD166E /* ScrollingPagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPagesView.swift; sourceTree = "<group>"; };
 		9E09E5BC2214E6FE00AD166E /* PosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
 		9E09E5BD2214E6FE00AD166E /* PosterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PosterCell.xib; sourceTree = "<group>"; };
-		9E24F8472215FDA600D10805 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		9E24F84A2215FEE500D10805 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		9E2FDB77221A858400741016 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		9E2FDB7D221AD64500741016 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		9E2FDB7E221AD64500741016 /* WelcomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeVC.xib; sourceTree = "<group>"; };
 		9E33F13C221552D700239350 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		9E48AFCC2217CCE7000AA5A5 /* Trailer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailer.swift; sourceTree = "<group>"; };
 		9E48AFCE2217D2B9000AA5A5 /* Imdb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imdb.swift; sourceTree = "<group>"; };
@@ -106,11 +110,12 @@
 		9E24F8462215FD6B00D10805 /* shared */ = {
 			isa = PBXGroup;
 			children = (
-				9E24F8472215FDA600D10805 /* PresentationController.swift */,
 				9EF1E27D221601A600A9D16C /* TrailerVC.swift */,
 				9EF1E27E221601A600A9D16C /* TrailerVC.xib */,
 				9E48AFD22218CA96000AA5A5 /* PopoverVC.swift */,
 				9E48AFD32218CA96000AA5A5 /* PopoverVC.xib */,
+				9E2FDB7D221AD64500741016 /* WelcomeVC.swift */,
+				9E2FDB7E221AD64500741016 /* WelcomeVC.xib */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			children = (
 				9E24F84A2215FEE500D10805 /* UIViewExtension.swift */,
 				9E48AFD02217F696000AA5A5 /* UIColorExtension.swift */,
+				9E2FDB77221A858400741016 /* UIFontExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -276,6 +282,7 @@
 				9E09E5AF2213E4E100AD166E /* UpcomingVC.xib in Resources */,
 				9E48AFD52218CA96000AA5A5 /* PopoverVC.xib in Resources */,
 				9E688AC72213A80D0018C189 /* Assets.xcassets in Resources */,
+				9E2FDB80221AD64500741016 /* WelcomeVC.xib in Resources */,
 				9E09E5BF2214E6FE00AD166E /* PosterCell.xib in Resources */,
 				9E688AC22213A8090018C189 /* Main.storyboard in Resources */,
 				9E09E5A72213E34A00AD166E /* NowPlayingVC.xib in Resources */,
@@ -346,14 +353,15 @@
 				9EF1E27F221601A600A9D16C /* TrailerVC.swift in Sources */,
 				9E688ABF2213A8090018C189 /* ViewController.swift in Sources */,
 				9EF1E29122169E6D00A9D16C /* CoreDataManager.swift in Sources */,
-				9E24F8482215FDA600D10805 /* PresentationController.swift in Sources */,
 				9E48AFD12217F696000AA5A5 /* UIColorExtension.swift in Sources */,
 				9E688AC52213A8090018C189 /* The10_Shreef.xcdatamodeld in Sources */,
+				9E2FDB78221A858400741016 /* UIFontExtension.swift in Sources */,
 				9E09E5B92214E4F600AD166E /* ScrollingPagesView.swift in Sources */,
 				9E33F13D221552D700239350 /* TabBarPresenter.swift in Sources */,
 				9E48AFCD2217CCE7000AA5A5 /* Trailer.swift in Sources */,
 				9E24F84B2215FEE500D10805 /* UIViewExtension.swift in Sources */,
 				9E09E5AE2213E4E100AD166E /* UpcomingVC.swift in Sources */,
+				9E2FDB7F221AD64500741016 /* WelcomeVC.swift in Sources */,
 				9EF1E2822216132300A9D16C /* Movie.swift in Sources */,
 				9E48AFCF2217D2B9000AA5A5 /* Imdb.swift in Sources */,
 				9E688ABD2213A8090018C189 /* AppDelegate.swift in Sources */,

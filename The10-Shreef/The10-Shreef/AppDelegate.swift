@@ -17,12 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var statusBarStyle: UIStatusBarStyle?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        CoreDataManager.containerName = "The10_Shreef"
         CoreDataManager.setUpCoreDataStack()
 
         TMDBConfig.apikey = "dc4c5515899a23feae1fcdb8b0251902"
 
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-        let vc = TabBarPresenter.mainViewController
+//        let vc = TabBarPresenter.mainViewController
+        let vc = WelcomeVC()
         let nav = UINavigationController(rootViewController: vc)
         nav.navigationBar.isHidden = true
         window = UIWindow()

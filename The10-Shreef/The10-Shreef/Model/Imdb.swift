@@ -16,10 +16,14 @@ class Imdb: NSManagedObject, FetchOrCreate, HasId {
     @NSManaged var id             : String
     @NSManaged var path           : String
     @NSManaged var rated          : String
+    @NSManaged var genre          : String
+    @NSManaged var actors         : String
+    @NSManaged var runtime        : String
     @NSManaged var director       : String
     @NSManaged var imdbScore      : String
     @NSManaged var metaCritic     : String
     @NSManaged var rottenTomatoes : String
+    
 
     func parse(client: ClientReturn) {
         guard let json = client.json else { return }
@@ -52,6 +56,15 @@ class Imdb: NSManagedObject, FetchOrCreate, HasId {
                     }
                 }
             }
+        }
+        if let actors = imdbInfo.Actors {
+            self.actors = actors
+        }
+        if let genres = imdbInfo.Genre {
+            self.genre = genres
+        }
+        if let runtime = imdbInfo.Runtime {
+            self.runtime = runtime
         }
     }
 }
