@@ -19,8 +19,8 @@ class PosterCell: UICollectionViewCell {
     @IBOutlet weak var additionalImage: UIImageView!
     @IBOutlet weak var imdbImage: UIImageView!
 
-    var movieInfo = Movie()
-    let interactor = Interactor()
+    var movieInfo   = Movie()
+    let interactor  = Interactor()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,7 +68,8 @@ class PosterCell: UICollectionViewCell {
         additionalLabel.text = movie.imdb.rottenTomatoes
         let rtScore = movie.imdb.rottenTomatoes.replacingOccurrences(of: "%", with: "")
         if let rtScore = Int(rtScore) {
-            if rtScore >= 60 {
+            let goodMovieScore = 60
+            if rtScore >= goodMovieScore {
                 additionalImage.image = #imageLiteral(resourceName: "icons8-tomato-48")
                 additionalLabel.textColor = UIColor.tomatoColor
             }

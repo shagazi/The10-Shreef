@@ -64,49 +64,54 @@ extension FetchOrCreate {
 }
 
 class Interactor: NSObject {
-    func fetchMovieByGenre(genre: Int, completionHandler: @escaping (([MovieMDB]) -> Void)) {
-        GenresMDB.genre_movies(genreId: genre, include_adult_movies: false, language: "EN") { (client, movies) in
-            guard let movies = movies else { return }
-            for i in movies {
-                let movie = Movie.fetchOrCreate(with: String(i.id))
-                movie.parse(data: i)
-            }
-        }
+    private func fetchTrailers(movieID: Int, completionHandler:  ((Bool?) -> Void)) {
+        MovieMDB.videos(movieID: movieID, completion: { (client, trailers) in
+            guard let trailers = trailers else { return }
+
+            let trailer = Trailer.createNew()
+            trailer.parse(client: client, results: trailers)
+
+            let movie = Movie.fetch(with: trailer.id)
+            movie?.trailer = trailer
+        })
+        completionHandler(true)
     }
-    
+
+    private func fetchImdbID(movieID: Int, completionHandler: @escaping ((Imdb?) -> Void)) {
+        MovieMDB.movie(movieID: movieID, completion: { (client, _) in
+            let imdb = Imdb.createNew()
+            imdb.parse(client: client)
+
+            let movie = Movie.fetch(with: imdb.id)
+            movie?.imdb = imdb
+            completionHandler(imdb)
+        })
+    }
+
     func fetchMovieData(movieType: String? = "", completionHandler: @escaping (([Movie]) -> Void)) {
-            let objects = Movie.fetchObjects(with: "type", with: movieType)
-            objects.forEach({ (movie) in
-                MovieMDB.videos(movieID: Int(movie.id), completion: { (client , trailers) in
-                    guard let trailers = trailers else { return }
+        let objects = Movie.fetchObjects(with: "type", with: movieType)
+        objects.forEach({ (movie) in
+            if let movieId = Int(movie.id) {
+                fetchTrailers(movieID: movieId, completionHandler: { (_) in
 
-                    let trailer = Trailer.createNew()
-                    trailer.parse(client: client, results: trailers)
-
-                    let movie = Movie.fetch(with: trailer.id)
-                    movie?.trailer = trailer
                 })
-                MovieMDB.movie(movieID: Int(movie.id), completion: { (client, _) in
-                    let imdb = Imdb.createNew()
-                    imdb.parse(client: client)
-
-                    let movie = Movie.fetch(with: imdb.id)
-                    movie?.imdb = imdb
-
-                    self.fetchImdb(imdbID: imdb.path, completionHandler: { (data, _) in
-                        guard let data = data else { return }
-                        imdb.parse(imdbInfo: data)
-                        if data.imdbRating == "" || data.imdbRating == "N/A" || imdb.rottenTomatoes == "" {
-                            Movie.delete(with: imdb.id)
-                        }
-                        DispatchQueue.main.async {
-                            completionHandler(objects)
-                        }
-                    })
+                fetchImdbID(movieID: movieId, completionHandler: { (imdb) in
+                    if let imdb = imdb {
+                        self.fetchImdb(imdbID: imdb.path, completionHandler: { (data, _) in
+                            guard let data = data else { return }
+                            imdb.parse(imdbInfo: data)
+                            if data.imdbRating == "" || data.imdbRating == "N/A" || imdb.rottenTomatoes == "" {
+                                Movie.delete(with: imdb.id)
+                            }
+                            DispatchQueue.main.async {
+                                completionHandler(objects)
+                            }
+                        })
+                    }
                 })
-            })
-        }
-
+            }
+        })
+    }
 
     func fetchImdb(imdbID: String, completionHandler: @escaping ((imdbInfo?, Error?) -> Void)) {
         var components          = URLComponents()
@@ -126,18 +131,18 @@ class Interactor: NSObject {
                 let ratingData = try JSONDecoder().decode(imdbInfo.self, from: data)
                 completionHandler(ratingData, error)
             } catch let error {
-                print(error)
+                print(error.localizedDescription)
             }
-        }.resume()
+            }.resume()
     }
 
     func fetchPoster(posterPath: String, completionHandler: @escaping ((UIImage?) -> Void)) {
-            var url = URL(string: "https://image.tmdb.org/t/p/w500")!
-            url.appendPathComponent(posterPath)
-            let data = try? Data(contentsOf: url)
-            if let imageData = data {
-                let image = UIImage(data: imageData)
-                completionHandler(image)
+        var url = URL(string: "https://image.tmdb.org/t/p/w500")!
+        url.appendPathComponent(posterPath)
+        let data = try? Data(contentsOf: url)
+        if let imageData = data {
+            let image = UIImage(data: imageData)
+            completionHandler(image)
         }
     }
 }

@@ -51,7 +51,8 @@ class TabBarPresenter {
 extension UITabBar {
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        sizeThatFits.height = 60
+        let desiredTabBarHeight = CGFloat(60)
+        sizeThatFits.height = desiredTabBarHeight
         return sizeThatFits
     }
 }

@@ -51,18 +51,17 @@ class UpcomingVC: UIViewController {
                 movie.type = self.movieType
             }
             self.interactor.fetchMovieData(movieType: self.movieType) { (_) in
+                self.movies = Movie.fetchObjects(with: "type", with: self.movieType)
+                self.movies.sort { $0.imdb.imdbScore > $1.imdb.imdbScore }
                 self.collectionView.reloadData()
             }
         }
     }
 }
 
-
 extension UpcomingVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.movies = Movie.fetchObjects(with: "type", with: self.movieType)
         if self.movies.count > 10 {
-            self.movies.sort { $0.imdb.imdbScore > $1.imdb.imdbScore }
             return 10
         }
         else {
