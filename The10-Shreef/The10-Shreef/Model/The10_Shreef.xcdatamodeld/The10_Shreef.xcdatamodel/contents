@@ -11,6 +11,7 @@
         <attribute name="rated" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rottenTomatoes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="runtime" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="imdb" inverseEntity="Movie" syncable="YES"/>
     </entity>
     <entity name="Movie" representedClassName="Movie" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,16 +20,17 @@
         <attribute name="releaseDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="imdb" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Imdb" syncable="YES"/>
-        <relationship name="trailer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trailer" syncable="YES"/>
+        <relationship name="imdb" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Imdb" inverseName="movie" inverseEntity="Imdb" syncable="YES"/>
+        <relationship name="trailer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trailer" inverseName="movie" inverseEntity="Trailer" syncable="YES"/>
     </entity>
     <entity name="Trailer" representedClassName="Trailer" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="trailer" inverseEntity="Movie" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Imdb" positionX="27" positionY="126" width="128" height="195"/>
+        <element name="Imdb" positionX="27" positionY="126" width="128" height="210"/>
         <element name="Movie" positionX="-36" positionY="9" width="128" height="165"/>
-        <element name="Trailer" positionX="0" positionY="117" width="128" height="75"/>
+        <element name="Trailer" positionX="0" positionY="117" width="128" height="90"/>
     </elements>
 </model>
