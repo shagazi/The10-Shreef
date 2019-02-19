@@ -24,7 +24,6 @@ class TabBarPresenter {
         let appearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font: UIFont(name: "American Typewriter", size: 18)!]
         appearance.setTitleTextAttributes(attributes, for: .normal)
-
         let nowPlayingVC = NowPlayingVC()
         let nowPlayingNav = UINavigationController(rootViewController: nowPlayingVC)
         nowPlayingNav.navigationBar.isHidden = true

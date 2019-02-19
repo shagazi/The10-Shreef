@@ -60,6 +60,7 @@ class NowPlayingVC: UIViewController {
     }
 }
 
+
 extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.movies.count > 10 {

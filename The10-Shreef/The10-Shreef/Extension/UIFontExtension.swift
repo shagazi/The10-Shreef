@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIFont  {
-
     static func mainItemFont() -> UIFont {
         let font = UIFont(name: "Al Nile", size: 16)
         return font ?? UIFont.systemFont(ofSize: 14)

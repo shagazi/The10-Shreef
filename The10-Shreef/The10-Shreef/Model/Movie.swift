@@ -18,6 +18,7 @@ class Movie: NSManagedObject, FetchOrCreate, HasId {
     @NSManaged var posterPath  : String
     @NSManaged var overView    : String
     @NSManaged var type        : String
+    @NSManaged var releaseDate : String
 
     @NSManaged var trailer     : Trailer
     @NSManaged var imdb        : Imdb
@@ -32,6 +33,9 @@ class Movie: NSManagedObject, FetchOrCreate, HasId {
         }
         if let overView = data.overview {
             self.overView = overView
+        }
+        if let releaseDate = data.release_date {
+            self.releaseDate = releaseDate
         }
     }
 }

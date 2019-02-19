@@ -14,6 +14,7 @@ class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
     @IBOutlet weak var trailerView: UIView!
     @IBOutlet weak var ratedLabel: UILabel!
     @IBOutlet weak var directedLabel: UILabel!
+    @IBOutlet weak var dateReleaseLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var runTimeLabel: UILabel!
 
@@ -34,7 +35,7 @@ class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         ratedLabel.text = "Rated " + movieInfo.imdb.rated
-        ratedLabel.font = UIFont.mainItemFont()
+        ratedLabel.font = UIFont(name: "Arial", size: 14)
         ratedLabel.sizeToFit()
 
         directedLabel.text = "Starring: " + movieInfo.imdb.actors
@@ -45,8 +46,16 @@ class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
         genreLabel.sizeToFit()
         genreLabel.font = UIFont.mainItemFont()
 
+        if let releaseDate = dateSanitize(date: movieInfo.releaseDate) {
+            dateReleaseLabel.text = releaseDate
+            dateReleaseLabel.font = UIFont(name: "Arial", size: 14)
+            dateReleaseLabel.textColor = UIColor.white
+            dateReleaseLabel.textAlignment = .center
+            dateReleaseLabel.sizeToFit()
+        }
+
         runTimeLabel.text = movieInfo.imdb.runtime
-        runTimeLabel.font = UIFont.mainItemFont()
+        runTimeLabel.font = UIFont(name: "Arial", size: 14)
         runTimeLabel.sizeToFit()
     }
 
@@ -58,4 +67,18 @@ class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
         player.delegate = self
         player.loadPlayer()
     }
+
+    func dateSanitize(date: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let newFormat = DateFormatter()
+        newFormat.dateFormat = "MMMM dd, yyyy"
+        if let date = dateFormatter.date(from: date) {
+            return newFormat.string(from: date)
+        } else {
+            return nil
+        }
+    }
+
 }
