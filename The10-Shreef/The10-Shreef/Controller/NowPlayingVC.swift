@@ -37,6 +37,7 @@ class NowPlayingVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
 
+
         self.collectionView.dataSource  = self
         self.collectionView.delegate    = self
 
@@ -54,7 +55,6 @@ class NowPlayingVC: UIViewController {
                 self.movies = Movie.fetchObjects(with: "type", with: self.movieType)
                 self.movies.sort { $0.imdb.imdbScore > $1.imdb.imdbScore }
                 self.collectionView.reloadData()
-
             }
         }
     }
@@ -74,6 +74,7 @@ extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PosterCell
         let movie = movies[indexPath.row]
+        cell.trailerDelegate = self
         cell.configure(with: movie)
         cell.clipsToBounds = false
         return cell
@@ -89,5 +90,14 @@ extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+    }
+}
+
+extension NowPlayingVC: PosterCellDelegate {
+    func playTrailer(trailerId: Movie) {
+        self.modalPresentationStyle = .overCurrentContext
+        let trailerVC = TrailerVC(movie: trailerId)
+        let popOverVC = PopoverVC(viewController: trailerVC)
+        self.present(popOverVC, animated: true, completion: nil)
     }
 }

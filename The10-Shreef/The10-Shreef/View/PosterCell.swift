@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 import YoutubeKit
 
+protocol PosterCellDelegate: class {
+    func playTrailer(trailerId: Movie)
+}
+
 class PosterCell: UICollectionViewCell {
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var overView: UITextView!
@@ -18,6 +22,8 @@ class PosterCell: UICollectionViewCell {
     @IBOutlet weak var additionalLabel: UILabel!
     @IBOutlet weak var additionalImage: UIImageView!
     @IBOutlet weak var imdbImage: UIImageView!
+
+    weak var trailerDelegate: PosterCellDelegate?
 
     var movieInfo   = Movie()
     let interactor  = Interactor()
@@ -31,10 +37,7 @@ class PosterCell: UICollectionViewCell {
     }
 
     @objc func playTrailer() {
-        let tab = TabBarPresenter.mainViewController
-        let vc = TrailerVC(movie: movieInfo)
-        tab.modalPresentationStyle = .overCurrentContext
-        tab.present(PopoverVC(viewController: vc), animated: true, completion: nil)
+        trailerDelegate?.playTrailer(trailerId: movieInfo)
     }
 
     func configure(with movie: Movie) {

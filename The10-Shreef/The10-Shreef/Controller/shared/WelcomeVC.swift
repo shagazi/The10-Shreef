@@ -13,7 +13,8 @@ class WelcomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            TabBarPresenter.setWindowRootVC(to: TabBarPresenter.mainViewController)
+            let rootVC = TabBarPresenter()
+            LoginPresenter.setWindowRootVC(to: rootVC)
         }
     }
 }

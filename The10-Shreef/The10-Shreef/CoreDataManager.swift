@@ -31,20 +31,6 @@ class CoreDataManager: NSObject {
         }
     }
 
-    public class func resetStore() {
-        let container = NSPersistentContainer(name: self.containerName)
-        container.loadPersistentStores { (store, _) in
-            let coordinator = container.persistentStoreCoordinator
-            let stores = coordinator.persistentStores
-            for store in stores {
-                if let url = store.url {
-                    try! FileManager.default.removeItem(atPath: url.path)
-                    try! coordinator.destroyPersistentStore(at: url, ofType: store.type, options: nil)
-                }
-            }
-        }
-        self.setUpCoreDataStack()
-    }
 
     class func deleteStore() {
         var url = NSPersistentContainer.defaultDirectoryURL()
@@ -52,4 +38,5 @@ class CoreDataManager: NSObject {
         url.appendPathExtension("sqlite")
         try? FileManager.default.removeItem(at: url)
     }
+
 }

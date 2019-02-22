@@ -8,22 +8,27 @@
 
 import UIKit
 
-class TabBarPresenter {
-    static var mainViewController: UIViewController = {
-        let tab = UITabBarController()
-        tab.tabBar.isTranslucent = false
-        tab.tabBar.layer.borderWidth = 0.0
-        tab.tabBar.clipsToBounds = true
-        tab.tabBar.itemPositioning = .fill
-        tab.tabBar.itemWidth = 50
-        tab.tabBar.itemSpacing = 50
-        tab.tabBar.tintColor = UIColor.active
-        tab.tabBar.barStyle = .black
-        tab.tabBar.unselectedItemTintColor = UIColor.lightGray
+class TabBarPresenter: UITabBarController {
+
+    var tabBarHeight = CGFloat()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tabBar.isTranslucent = false
+        self.tabBar.layer.borderWidth = 0.0
+        self.tabBar.clipsToBounds = true
+        self.tabBar.itemPositioning = .fill
+        self.tabBar.itemWidth = 50
+        self.tabBar.itemSpacing = 50
+        self.tabBar.tintColor = UIColor.active
+        self.tabBar.barStyle = .black
+        self.tabBar.unselectedItemTintColor = UIColor.lightGray
+        tabBarHeight = self.tabBar.frame.height - 20
 
         let appearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font: UIFont(name: "American Typewriter", size: 18)!]
         appearance.setTitleTextAttributes(attributes, for: .normal)
+
         let nowPlayingVC = NowPlayingVC()
         let nowPlayingNav = UINavigationController(rootViewController: nowPlayingVC)
         nowPlayingNav.navigationBar.isHidden = true
@@ -32,26 +37,29 @@ class TabBarPresenter {
         let upcomingNav = UINavigationController(rootViewController: upcomingVC)
         upcomingNav.navigationBar.isHidden = true
 
-        tab.addChild(nowPlayingNav)
-        tab.addChild(upcomingNav)
+        self.addChild(nowPlayingNav)
+        self.addChild(upcomingNav)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var tabFrame = self.tabBar.frame
+        guard let window = UIApplication.shared.keyWindow else {return}
+        tabFrame.size.height = tabBarHeight + window.safeAreaInsets.bottom
+        self.tabBar.frame = tabFrame
+    }
+}
+class LoginPresenter {
+    static var mainViewController: UIViewController = {
+        let tab = TabBarPresenter()
 
         return tab
     }()
 
     static func setWindowRootVC(to viewController: UIViewController) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        UIView.transition(with: appDelegate.window!, duration: 3.0, options: .transitionCrossDissolve, animations: {
+        UIView.transition(with: appDelegate.window!, duration: 1.0, options: .transitionCrossDissolve, animations: {
             appDelegate.window?.rootViewController = viewController
         }, completion: nil)
-    }
-
-}
-
-extension UITabBar {
-    override open func sizeThatFits(_ size: CGSize) -> CGSize {
-        var sizeThatFits = super.sizeThatFits(size)
-        let desiredTabBarHeight = CGFloat(60)
-        sizeThatFits.height = desiredTabBarHeight
-        return sizeThatFits
     }
 }
