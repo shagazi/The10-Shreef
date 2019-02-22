@@ -1,8 +1,8 @@
 //
-//  NowPlayingVC.swift
+//  MovieVC.swift
 //  The10-Shreef
 //
-//  Created by Shreef Hagazi  on 2/12/19.
+//  Created by Shreef Hagazi  on 2/21/19.
 //  Copyright © 2019 Shreef Hagazi . All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import YouTubePlayer
 import AnimatedCollectionViewLayout
 import CoreData
 
-class NowPlayingVC: UIViewController {
+class MovieVC: UIViewController {
     @IBOutlet weak var collectionView:  ScrollingPagesView!
     @IBOutlet weak var pageControl: UIPageControl!
 
@@ -22,11 +22,12 @@ class NowPlayingVC: UIViewController {
     let imdbIdPath       = "imdbIdPath"
     let trailerPath      = "trailerPath"
     let idString         = "id"
-    let movieType        = "Now Playing"
+    let movieType: String!
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(title: String) {
+        self.movieType = title
         super.init(nibName: nil, bundle: nil)
-        self.title = "In Theaters"
+        self.title = movieType
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,31 +38,46 @@ class NowPlayingVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
 
-
         self.collectionView.dataSource  = self
         self.collectionView.delegate    = self
 
         let nib = UINib(nibName: "PosterCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
-        MovieMDB.nowplaying(page: 1) { (_, movies) in
-            guard let movies = movies else { return }
-            for i in movies {
-                let movie = Movie.fetchOrCreate(with: String(i.id))
-                movie.parse(data: i)
-                movie.type = self.movieType
+        if movieType == "In Theaters" {
+            MovieMDB.nowplaying(page: 1) { (_, movies) in
+                guard let movies = movies else { return }
+                for i in movies {
+                    let movie = Movie.fetchOrCreate(with: String(i.id))
+                    movie.parse(data: i)
+                    movie.type = self.movieType
+                }
+                self.fetchMovieData()
             }
-            self.interactor.fetchMovieData(movieType: self.movieType) { (_) in
-                self.movies = Movie.fetchObjects(with: "type", with: self.movieType)
-                self.movies.sort { $0.imdb.imdbScore > $1.imdb.imdbScore }
-                self.collectionView.reloadData()
+        }
+        else {
+            MovieMDB.upcoming(page: 1) { (_, movies) in
+                guard let movies = movies else { return }
+                for i in movies {
+                    let movie = Movie.fetchOrCreate(with: String(i.id))
+                    movie.parse(data: i)
+                    movie.type = self.movieType
+                }
+                self.fetchMovieData()
             }
+        }
+    }
+
+    private func fetchMovieData() {
+        self.interactor.fetchMovieData(movieType: self.movieType) { (_) in
+            self.movies = Movie.fetchObjects(with: "type", with: self.movieType)
+            self.movies.sort { $0.imdb.imdbScore > $1.imdb.imdbScore }
+            self.collectionView.reloadData()
         }
     }
 }
 
-
-extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension MovieVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.movies.count > 10 {
             return 10
@@ -93,7 +109,7 @@ extension NowPlayingVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
 }
 
-extension NowPlayingVC: PosterCellDelegate {
+extension MovieVC: PosterCellDelegate {
     func playTrailer(trailerId: Movie) {
         self.modalPresentationStyle = .overCurrentContext
         let trailerVC = TrailerVC(movie: trailerId)

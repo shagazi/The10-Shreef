@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieVC" customModule="The10_Shreef" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="gJd-2S-BSH" id="qke-Ve-FzX"/>
+                <outlet property="pageControl" destination="oEi-z6-5tG" id="fBx-V0-ugZ"/>
+                <outlet property="view" destination="FXV-l4-7Ow" id="UZy-lF-OtF"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="FXV-l4-7Ow">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gJd-2S-BSH" customClass="ScrollingPagesView" customModule="The10_Shreef" customModuleProvider="target">
+                    <rect key="frame" x="16" y="36" width="343" height="588"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="5" id="fH0-EQ-Xvs">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="10" minY="5" maxX="10" maxY="5"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="oEi-z6-5tG">
+                    <rect key="frame" x="168" y="624" width="39" height="37"/>
+                    <color key="currentPageIndicatorTintColor" red="0.98593085999999996" green="0.23648709060000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gJd-2S-BSH" firstAttribute="leading" secondItem="FXV-l4-7Ow" secondAttribute="leading" constant="16" id="HXJ-3l-aBl"/>
+                <constraint firstItem="oEi-z6-5tG" firstAttribute="top" secondItem="gJd-2S-BSH" secondAttribute="bottom" id="Joz-7m-thm"/>
+                <constraint firstAttribute="trailing" secondItem="gJd-2S-BSH" secondAttribute="trailing" constant="16" id="K5A-n1-Oau"/>
+                <constraint firstItem="gJd-2S-BSH" firstAttribute="top" secondItem="FXV-l4-7Ow" secondAttribute="top" constant="36" id="aL7-Qd-7hJ"/>
+                <constraint firstItem="oEi-z6-5tG" firstAttribute="leading" secondItem="FXV-l4-7Ow" secondAttribute="leading" constant="168" id="eKJ-e8-BYJ"/>
+                <constraint firstAttribute="bottom" secondItem="oEi-z6-5tG" secondAttribute="bottom" constant="6" id="gIc-JG-4VS"/>
+                <constraint firstAttribute="trailing" secondItem="oEi-z6-5tG" secondAttribute="trailing" constant="168" id="wy4-dY-wGq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="JBg-qV-out"/>
+            <point key="canvasLocation" x="130.40000000000001" y="152.47376311844079"/>
+        </view>
+    </objects>
+</document>

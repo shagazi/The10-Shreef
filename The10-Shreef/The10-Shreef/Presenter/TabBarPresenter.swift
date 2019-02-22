@@ -8,8 +8,7 @@
 
 import UIKit
 
-class TabBarPresenter: UITabBarController {
-
+class TabBarController: UITabBarController {
     var tabBarHeight = CGFloat()
 
     override func viewDidLoad() {
@@ -29,16 +28,16 @@ class TabBarPresenter: UITabBarController {
         let attributes = [NSAttributedString.Key.font: UIFont(name: "American Typewriter", size: 18)!]
         appearance.setTitleTextAttributes(attributes, for: .normal)
 
-        let nowPlayingVC = NowPlayingVC()
-        let nowPlayingNav = UINavigationController(rootViewController: nowPlayingVC)
+        let nowPlaying = MovieVC(title: "In Theaters")
+        let nowPlayingNav = UINavigationController(rootViewController: nowPlaying)
         nowPlayingNav.navigationBar.isHidden = true
 
-        let upcomingVC = UpcomingVC()
-        let upcomingNav = UINavigationController(rootViewController: upcomingVC)
-        upcomingNav.navigationBar.isHidden = true
+        let comingSoon = MovieVC(title: "Coming Soon")
+        let comingSoonNav = UINavigationController(rootViewController: comingSoon)
+        comingSoonNav.navigationBar.isHidden = true
 
         self.addChild(nowPlayingNav)
-        self.addChild(upcomingNav)
+        self.addChild(comingSoonNav)
     }
 
     override func viewDidLayoutSubviews() {
@@ -49,9 +48,10 @@ class TabBarPresenter: UITabBarController {
         self.tabBar.frame = tabFrame
     }
 }
-class LoginPresenter {
+
+class TabBarPresenter {
     static var mainViewController: UIViewController = {
-        let tab = TabBarPresenter()
+        let tab = TabBarController()
 
         return tab
     }()
