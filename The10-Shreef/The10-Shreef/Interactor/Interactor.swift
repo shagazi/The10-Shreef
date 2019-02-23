@@ -28,13 +28,13 @@ extension FetchOrCreate {
             return object
         }
     }
-
+    
     static func createNew() -> T {
         let className = String(describing: type(of: self)).split(separator:".").first ?? ""
         let newT = NSEntityDescription.insertNewObject(forEntityName: String(className), into: CoreDataManager.shared.context) as! T
         return newT
     }
-
+    
     static func fetchObjects(with key: String? = "", with value: String? = "") -> [T] {
         let className = String(describing: type(of: self)).split(separator:".").first ?? ""
         let request = NSFetchRequest<T>(entityName: String(className))
@@ -44,7 +44,7 @@ extension FetchOrCreate {
         let fetchedObjects = try! CoreDataManager.shared.context.fetch(request)
         return fetchedObjects
     }
-
+    
     static func fetch(with ID: String) -> T? {
         let className = String(describing: type(of: self)).split(separator:".").first ?? ""
         let request = NSFetchRequest<T>(entityName: String(className))
@@ -55,7 +55,7 @@ extension FetchOrCreate {
         }
         return nil
     }
-
+    
     static func delete(with ID: String) {
         if let object = fetch(with: ID) {
             CoreDataManager.shared.context.delete(object)
@@ -67,27 +67,27 @@ class Interactor: NSObject {
     private func fetchTrailers(movieID: Int, completionHandler:  ((Bool?) -> Void)) {
         MovieMDB.videos(movieID: movieID, completion: { (client, trailers) in
             guard let trailers = trailers else { return }
-
+            
             let trailer = Trailer.createNew()
             trailer.parse(client: client, results: trailers)
-
+            
             let movie = Movie.fetch(with: trailer.id)
             movie?.trailer = trailer
         })
         completionHandler(true)
     }
-
+    
     private func fetchImdbID(movieID: Int, completionHandler: @escaping ((Imdb?) -> Void)) {
         MovieMDB.movie(movieID: movieID, completion: { (client, _) in
             let imdb = Imdb.createNew()
             imdb.parse(client: client)
-
+            
             let movie = Movie.fetch(with: imdb.id)
             movie?.imdb = imdb
             completionHandler(imdb)
         })
     }
-
+    
     func fetchMovieData(movieType: String? = "", completionHandler: @escaping (([Movie]) -> Void)) {
         let dispatchGroup = DispatchGroup()
         let objects = Movie.fetchObjects(with: "type", with: movieType)
@@ -95,7 +95,7 @@ class Interactor: NSObject {
             dispatchGroup.enter()
             if let movieId = Int(movie.id) {
                 fetchTrailers(movieID: movieId, completionHandler: { (_) in
-
+                    
                 })
                 fetchImdbID(movieID: movieId, completionHandler: { (imdb) in
                     if let imdb = imdb {
@@ -110,20 +110,20 @@ class Interactor: NSObject {
                     }
                 })
             }
-
+            
         })
         dispatchGroup.notify(queue: .main) {
             completionHandler(objects)
         }
     }
-
+    
     func fetchImdb(imdbID: String, completionHandler: @escaping ((imdbInfo?, Error?) -> Void)) {
         var components          = URLComponents()
         components.scheme       = "https"
         components.host         = "www.omdbapi.com"
         components.queryItems   = [URLQueryItem(name: "i", value: imdbID),
                                    URLQueryItem(name: "apikey", value: "a3a5bcba")]
-
+        
         guard let url = components.url else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -139,7 +139,7 @@ class Interactor: NSObject {
             }
             }.resume()
     }
-
+    
     func fetchPoster(posterPath: String, completionHandler: @escaping ((UIImage?) -> Void)) {
         var url = URL(string: "https://image.tmdb.org/t/p/w500")!
         url.appendPathComponent(posterPath)
