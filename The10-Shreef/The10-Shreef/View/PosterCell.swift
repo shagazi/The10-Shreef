@@ -47,6 +47,7 @@ class PosterCell: UICollectionViewCell {
                 self.posterImage.image = image
             }
         }
+
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .justified
         paragraphStyle.hyphenationFactor = 1.0
@@ -58,7 +59,8 @@ class PosterCell: UICollectionViewCell {
         ]
         let attributedText = NSAttributedString(string: movie.overView, attributes: attributes)
         overView.attributedText = attributedText
-        self.overView.scrollRangeToVisible(NSMakeRange(0,1))
+        overView.scrollRangeToVisible(NSMakeRange(0,1))
+
         if movie.imdb.imdbScore == "N/A" || movie.imdb.imdbScore == "" {
             imdbLabel.text = ""
             imdbImage.image = nil
@@ -66,8 +68,8 @@ class PosterCell: UICollectionViewCell {
         else {
             imdbLabel.text = movie.imdb.imdbScore + "/10"
             imdbImage.image = #imageLiteral(resourceName: "icons8-imdb-48")
-    
         }
+
         additionalLabel.text = movie.imdb.rottenTomatoes
         let rtScore = movie.imdb.rottenTomatoes.replacingOccurrences(of: "%", with: "")
         if let rtScore = Int(rtScore) {

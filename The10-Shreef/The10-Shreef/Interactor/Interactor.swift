@@ -89,8 +89,10 @@ class Interactor: NSObject {
     }
 
     func fetchMovieData(movieType: String? = "", completionHandler: @escaping (([Movie]) -> Void)) {
+        let dispatchGroup = DispatchGroup()
         let objects = Movie.fetchObjects(with: "type", with: movieType)
         objects.forEach({ (movie) in
+            dispatchGroup.enter()
             if let movieId = Int(movie.id) {
                 fetchTrailers(movieID: movieId, completionHandler: { (_) in
 
@@ -103,14 +105,16 @@ class Interactor: NSObject {
                             if data.imdbRating == "" || data.imdbRating == "N/A" || imdb.rottenTomatoes == "" {
                                 Movie.delete(with: imdb.id)
                             }
-                            DispatchQueue.main.async {
-                                completionHandler(objects)
-                            }
+                            dispatchGroup.leave()
                         })
                     }
                 })
             }
+
         })
+        dispatchGroup.notify(queue: .main) {
+            completionHandler(objects)
+        }
     }
 
     func fetchImdb(imdbID: String, completionHandler: @escaping ((imdbInfo?, Error?) -> Void)) {

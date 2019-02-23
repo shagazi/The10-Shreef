@@ -23,6 +23,7 @@ class MovieVC: UIViewController {
     let trailerPath      = "trailerPath"
     let idString         = "id"
     let movieType: String!
+    let dispatchGroup = DispatchGroup()
 
     init(title: String) {
         self.movieType = title
