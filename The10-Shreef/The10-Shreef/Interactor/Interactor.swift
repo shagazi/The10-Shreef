@@ -95,7 +95,6 @@ class Interactor: NSObject {
             dispatchGroup.enter()
             if let movieId = Int(movie.id) {
                 fetchTrailers(movieID: movieId, completionHandler: { (_) in
-                    
                 })
                 fetchImdbID(movieID: movieId, completionHandler: { (imdb) in
                     if let imdb = imdb {

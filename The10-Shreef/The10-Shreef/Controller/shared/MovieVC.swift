@@ -16,14 +16,11 @@ class MovieVC: UIViewController {
     @IBOutlet weak var collectionView:  ScrollingPagesView!
     @IBOutlet weak var pageControl: UIPageControl!
 
+    let movieType: String!
     var movies: [Movie]  = []
     let interactor       = Interactor()
+    let dispatchGroup    = DispatchGroup()
     let reuseIdentifier  = "poster"
-    let imdbIdPath       = "imdbIdPath"
-    let trailerPath      = "trailerPath"
-    let idString         = "id"
-    let movieType: String!
-    let dispatchGroup = DispatchGroup()
 
     init(title: String) {
         self.movieType = title
@@ -45,27 +42,30 @@ class MovieVC: UIViewController {
         let nib = UINib(nibName: "PosterCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
+        fetchMovies()
+    }
+
+    private func fetchMovies() {
         if movieType == "In Theaters" {
             MovieMDB.nowplaying(page: 1) { (_, movies) in
-                guard let movies = movies else { return }
-                for i in movies {
-                    let movie = Movie.fetchOrCreate(with: String(i.id))
-                    movie.parse(data: i)
-                    movie.type = self.movieType
-                }
+                self.createMovies(movies: movies)
                 self.fetchMovieData()
             }
         }
         else {
             MovieMDB.upcoming(page: 1) { (_, movies) in
-                guard let movies = movies else { return }
-                for i in movies {
-                    let movie = Movie.fetchOrCreate(with: String(i.id))
-                    movie.parse(data: i)
-                    movie.type = self.movieType
-                }
+                self.createMovies(movies: movies)
                 self.fetchMovieData()
             }
+        }
+    }
+
+    private func createMovies(movies: [MovieMDB]?) {
+        guard let movies = movies else { return }
+        for i in movies {
+            let movie = Movie.fetchOrCreate(with: String(i.id))
+            movie.parse(data: i)
+            movie.type = self.movieType
         }
     }
 
