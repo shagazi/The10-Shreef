@@ -9,6 +9,10 @@
 import UIKit
 
 extension UIFont  {
+    static func movieDetailFont() -> UIFont {
+        let font = UIFont(name: "Arial", size: 14)
+        return font ?? UIFont.systemFont(ofSize: 14)
+    }
     static func mainItemFont() -> UIFont {
         let font = UIFont(name: "Al Nile", size: 16)
         return font ?? UIFont.systemFont(ofSize: 14)

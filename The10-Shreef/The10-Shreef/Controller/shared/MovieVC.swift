@@ -12,6 +12,7 @@ import YouTubePlayer
 import AnimatedCollectionViewLayout
 import CoreData
 
+
 class MovieVC: UIViewController {
     @IBOutlet weak var collectionView:  ScrollingPagesView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -19,7 +20,6 @@ class MovieVC: UIViewController {
     let movieType: String!
     var movies: [Movie]  = []
     let interactor       = Interactor()
-    let dispatchGroup    = DispatchGroup()
     let reuseIdentifier  = "poster"
 
     init(title: String) {
@@ -46,7 +46,7 @@ class MovieVC: UIViewController {
     }
 
     private func fetchMovies() {
-        if movieType == "In Theaters" {
+        if movieType == MovieType.inTheaters.rawValue {
             MovieMDB.nowplaying(page: 1) { (_, movies) in
                 self.createMovies(movies: movies)
                 self.fetchMovieData()

@@ -35,8 +35,20 @@ class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         ratedLabel.text = "Rated " + movieInfo.imdb.rated
-        ratedLabel.font = UIFont(name: "Arial", size: 14)
+        ratedLabel.font = UIFont.movieDetailFont()
         ratedLabel.sizeToFit()
+
+        if let releaseDate = dateSanitize(date: movieInfo.releaseDate) {
+            dateReleaseLabel.text = releaseDate
+            dateReleaseLabel.font = UIFont.movieDetailFont()
+            dateReleaseLabel.textColor = UIColor.white
+            dateReleaseLabel.textAlignment = .center
+            dateReleaseLabel.sizeToFit()
+        }
+
+        runTimeLabel.text = movieInfo.imdb.runtime
+        runTimeLabel.font = UIFont.movieDetailFont()
+        runTimeLabel.sizeToFit()
 
         directedLabel.text = "Starring: " + movieInfo.imdb.actors
         directedLabel.sizeToFit()
@@ -45,18 +57,6 @@ class TrailerVC: UIViewController, YTSwiftyPlayerDelegate {
         genreLabel.text = "Genres: " + movieInfo.imdb.genre
         genreLabel.sizeToFit()
         genreLabel.font = UIFont.mainItemFont()
-
-        if let releaseDate = dateSanitize(date: movieInfo.releaseDate) {
-            dateReleaseLabel.text = releaseDate
-            dateReleaseLabel.font = UIFont(name: "Arial", size: 14)
-            dateReleaseLabel.textColor = UIColor.white
-            dateReleaseLabel.textAlignment = .center
-            dateReleaseLabel.sizeToFit()
-        }
-
-        runTimeLabel.text = movieInfo.imdb.runtime
-        runTimeLabel.font = UIFont(name: "Arial", size: 14)
-        runTimeLabel.sizeToFit()
     }
 
     override func viewDidLayoutSubviews() {

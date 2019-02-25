@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum MovieType: String {
+    case inTheaters = "In Theaters"
+    case comingSoon = "Coming Soon"
+}
+
 class TabBarController: UITabBarController {
     var tabBarHeight = CGFloat()
 
@@ -28,11 +33,11 @@ class TabBarController: UITabBarController {
         let attributes = [NSAttributedString.Key.font: UIFont(name: "American Typewriter", size: 18)!]
         appearance.setTitleTextAttributes(attributes, for: .normal)
 
-        let nowPlaying = MovieVC(title: "In Theaters")
+        let nowPlaying = MovieVC(title: MovieType.inTheaters.rawValue)
         let nowPlayingNav = UINavigationController(rootViewController: nowPlaying)
         nowPlayingNav.navigationBar.isHidden = true
 
-        let comingSoon = MovieVC(title: "Coming Soon")
+        let comingSoon = MovieVC(title: MovieType.comingSoon.rawValue)
         let comingSoonNav = UINavigationController(rootViewController: comingSoon)
         comingSoonNav.navigationBar.isHidden = true
 
