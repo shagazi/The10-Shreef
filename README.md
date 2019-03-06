@@ -5,6 +5,3 @@ A movie application that provides the user with ten movies that are in theaters,
 the movie and the trailer.
 
 Note: Api provides inaccurate data regarding differences in movies that are in theaters and those that are coming soon. Might see duplicates.
-
-![](pt1.gif)
-![](pt2.gif)
