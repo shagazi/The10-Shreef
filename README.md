@@ -5,5 +5,4 @@ A movie application that provides the user with ten movies that are in theaters,
 the movie and the trailer.
 
 
-
-                                                      ![](preview.gif)
+![](preview.gif)
