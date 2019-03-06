@@ -7,4 +7,4 @@ the movie and the trailer.
 Note: Api provides inaccurate data regarding differences in movies that are in theaters and those that are coming soon. Might see duplicates.
 
 
-![](preview1.gif)  ![](preview2.gif)
+![](preview1.gif)
